@@ -1,1 +1,8 @@
-<router-outlet />
+<div class="grid grid-cols-[250px_1fr] grid-rows-[auto_1fr] h-dvh bg-(--general-30)">
+  <app-header class="col-span-2" />
+
+  <app-sidebar class="shrink-0 border-r border-r-(--primary-40)" />
+  <main class="flex flex-col flex-1 overflow-y-auto">
+    <router-outlet />
+  </main>
+</div>
