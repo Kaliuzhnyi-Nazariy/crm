@@ -1,0 +1,137 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import 'tailwindcss';
+
+:root {
+  /* General */
+  --general-100: #131523;
+  --general-90: #333752;
+  --general-80: #5a607f;
+  --general-70: #7e84a3;
+  --general-60: #a1a7c4;
+  --general-50: #d7dbec;
+  --general-40: #e6e9f4;
+  --general-30: #f5f6fa;
+
+  /* Primary */
+  --primary-100: #1e5eff;
+  --primary-90: #336dff;
+  --primary-80: #4f81ff;
+  --primary-70: #608dff;
+  --primary-60: #89abff;
+  --primary-50: #b6cbff;
+  --primary-40: #d9e4ff;
+  --primary-30: #ecf2ff;
+
+  /* Secondary */
+  --secondary-100: #1e5eff;
+  --secondary-90: #336dff;
+  --secondary-80: #4f81ff;
+  --secondary-70: #608dff;
+  --secondary-60: #89abff;
+  --secondary-50: #b6cbff;
+  --secondary-40: #d9e4ff;
+  --secondary-30: #ecf2ff;
+
+  /* Red */
+  --red-100: #f0142f;
+  --red-90: #f12b43;
+  --red-80: #f34359;
+  --red-70: #f45a6d;
+  --red-60: #f8919d;
+  --red-50: #fab3bc;
+  --red-40: #fcd5d9;
+  --red-30: #fde7ea;
+
+  /* Green */
+  --green-100: #06a561;
+  --green-90: #1fd286;
+  --green-80: #25e191;
+  --green-70: #48e9a5;
+  --green-60: #74efb9;
+  --green-50: #95f6cc;
+  --green-40: #c4f8e2;
+  --green-30: #daf9ec;
+
+  /* Yellow */
+  --yellow-100: #f99600;
+  --yellow-90: #ffc700;
+  --yellow-80: #ffd613;
+  --yellow-70: #ffe45f;
+  --yellow-60: #ffe582;
+  --yellow-50: #ffeca3;
+  --yellow-40: #fff4c9;
+  --yellow-30: #fff9e1;
+
+  /* Headings */
+  --font-h1: bold 5rem/1.12 'Inter', sans-serif;
+  --font-h2: bold 4rem/0.9 'Inter', sans-serif;
+  --font-h3: bold 3rem/1.375 'Inter', sans-serif;
+  --font-h4: bold 2rem/1.375 'Inter', sans-serif;
+  --font-h5: bold 1.5rem/1.5 'Inter', sans-serif;
+  --font-h6: bold 1.25rem/1.4 'Inter', sans-serif;
+
+  /* Subtitles */
+  --font-subtitle-1: 400 1.25rem/1.4 'Inter', sans-serif;
+  --font-subtitle-2: 400 1.5rem/1.4 'Inter', sans-serif;
+
+  /* Body text sizes */
+  --font-body-lg: 700 1rem/1.5;
+  --font-body-md: 500 1rem/1.5;
+  --font-body-sm: 400 1rem/1.5;
+
+  /* Captions */
+  --font-caption-1: bold 0.875rem/1.4 'Inter', sans-serif;
+  --font-caption-2: bold 1rem/1.5 'Inter', sans-serif;
+}
+
+/* Headings */
+.text-h1 {
+  font: var(--font-h1);
+}
+.text-h2 {
+  font: var(--font-h2);
+}
+.text-h3 {
+  font: var(--font-h3);
+}
+.text-h4 {
+  font: var(--font-h4);
+}
+.text-h5 {
+  font: var(--font-h5);
+}
+.text-h6 {
+  font: var(--font-h6);
+}
+
+/* Subtitles */
+.text-subtitle-1 {
+  font: var(--font-subtitle-1);
+}
+.text-subtitle-2 {
+  font: var(--font-subtitle-2);
+}
+
+/* Body Sizes */
+.text-body-lg {
+  font-size: var(--font-body-lg);
+}
+.text-body-md {
+  font-size: var(--font-body-md);
+}
+.text-body-sm {
+  font-size: var(--font-body-sm);
+}
+
+/* Captions */
+.text-caption-1 {
+  font: var(--font-caption-1);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.text-caption-2 {
+  font: var(--font-caption-2);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
