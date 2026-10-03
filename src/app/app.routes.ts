@@ -20,7 +20,7 @@ export const routes: Routes = [
       import('./features/categories/categories.routes').then((m) => m.CATEGORIES_ROUTES),
   },
   {
-    path: 'coupon',
+    path: 'coupons',
     loadChildren: () => import('./features/coupons/coupons.routes').then((m) => m.COUPONS_ROUTES),
   },
   {
