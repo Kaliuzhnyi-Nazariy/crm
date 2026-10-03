@@ -1,9 +1,9 @@
 import { Component, input } from '@angular/core';
 import { NgComponentOutlet } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
-  imports: [NgComponentOutlet, RouterLink],
+  imports: [NgComponentOutlet, RouterLink, RouterLinkActive],
   selector: 'app-list-item',
   styles: ``,
   templateUrl: './list-item.component.html',
