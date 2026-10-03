@@ -1,12 +1,18 @@
 <label
   for="headerSearch"
-  class="flex gap-2 text-(--general-70) focus-within:text-(--general-100) focus:text-(--general-100) hover:text-(--general-100) transition-colors items-center group"
+  class="group flex flex-col text-(--general-70) hover:text-(--general-100) focus-within:text-(--general-100) transition-colors overflow-hidden cursor-pointer"
 >
-  <svg data-p-icon="search" class="size-4.5 shrink-0"></svg>
-  <input
-    type="text"
-    id="headerSearch"
-    placeholder="Search..."
-    class="group-focus:outline-none group-focus-within:outline-none flex-1"
-  />
+  <div class="flex gap-2 items-center">
+    <svg data-p-icon="search" class="size-4.5 shrink-0"></svg>
+    <input
+      type="text"
+      id="headerSearch"
+      placeholder="Search..."
+      class="flex-1 outline-none bg-transparent"
+    />
+  </div>
+
+  <div
+    class="h-px w-full bg-(--primary-40) mt-1 scale-x-0 group-focus-within:scale-x-100 transition-transform duration-200 origin-left"
+  ></div>
 </label>
