@@ -1,21 +1,20 @@
-import { NgComponentOutlet } from '@angular/common';
 import { Component, input } from '@angular/core';
-
-type Function = {
-  name?: string;
-  icon?: any;
-  fn?: () => void;
-};
+import { Button } from '../../../shared/components/button/button.type';
+import { ButtonComponent } from '../../../shared/components/button/button.component';
 
 @Component({
-  imports: [NgComponentOutlet],
+  imports: [ButtonComponent],
   selector: 'app-content',
-  styles: ``,
+  styles: `
+    host: {
+      class: 'flex flex-col flex-1 min-h-0 w-full';
+    }
+  `,
   templateUrl: './content.component.html',
 })
 export class ContentComponent {
   title = input<string>();
 
-  mainFunction = input<Function>();
-  secondaryFunction = input<Function>();
+  mainFunction = input<Button>();
+  secondaryFunction = input<Button>();
 }
