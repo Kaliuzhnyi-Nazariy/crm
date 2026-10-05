@@ -79,6 +79,7 @@
   --font-body-lg: 700 1rem/1.5;
   --font-body-md: 500 1rem/1.5;
   --font-body-sm: 400 1rem/1.5;
+  --font-body-xs: 400 0.875rem/1.43 'Inter', sans-serif;
 
   /* Captions */
   --font-caption-1: bold 0.875rem/1.4 'Inter', sans-serif;
@@ -123,6 +124,12 @@
 .text-body-sm {
   font-size: var(--font-body-sm);
 }
+.text-body-xs {
+  font: var(--font-body-xs) !important;
+}
+.text-body-xs::placeholder {
+  font: var(--font-body-xs) !important;
+}
 
 /* Captions */
 .text-caption-1 {
@@ -132,6 +139,6 @@
 }
 .text-caption-2 {
   font: var(--font-caption-2);
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   letter-spacing: 2px;
 }
