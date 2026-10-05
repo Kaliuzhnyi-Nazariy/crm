@@ -1,0 +1,8 @@
+@if (settedFunction()) {
+  <button (click)="settedFunction()?.fn?.()" [class]="btnStyles()">
+    @if (settedFunction()?.icon) {
+      <ng-container *ngComponentOutlet="settedFunction()!.icon" />
+    }
+    {{ settedFunction()?.name }}
+  </button>
+}
