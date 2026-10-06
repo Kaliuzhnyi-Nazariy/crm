@@ -1,9 +1,10 @@
 import { Component, input } from '@angular/core';
 import { Button } from '../../../shared/components/button/button.type';
 import { ButtonComponent } from '../../../shared/components/button/button.component';
+import { NgComponentOutlet } from '@angular/common';
 
 @Component({
-  imports: [ButtonComponent],
+  imports: [ButtonComponent, NgComponentOutlet],
   selector: 'app-content',
   styles: `
     host: {
