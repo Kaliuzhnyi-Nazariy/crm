@@ -1,0 +1,26 @@
+<table class="w-full mt-5 full table-fixed border-collapse text-body-xs leading-[1.358]!">
+  <thead>
+    <tr class="text-left border-b-2 border-(--general-60) text-(--general-80) font-bold">
+      <th class="py-3">Name</th>
+      <th class="py-3">Date</th>
+      <th class="py-3">Amount</th>
+      <th class="py-3">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (t of transactions; track t.name) {
+      <tr class="border-b last:border-none border-(--general-60)">
+        <td class="py-4">{{ t.name }}</td>
+        <td class="py-4">{{ t.date }}</td>
+        <td class="py-4">${{ t.amount }}</td>
+        <td class="py-3.5">
+          <span [class]="styles()(t.status)" class="inline-block leading-none">{{ t.status }}</span>
+        </td>
+      </tr>
+    } @empty {
+      <tr>
+        <td colspan="4" class="text-center py-4 text-(--general-80)">No transactions yet</td>
+      </tr>
+    }
+  </tbody>
+</table>
