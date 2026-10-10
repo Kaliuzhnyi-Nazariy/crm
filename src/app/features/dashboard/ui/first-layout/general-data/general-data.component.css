@@ -1,0 +1,30 @@
+.rulled-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: stretch;
+  overflow: hidden;
+}
+
+.card {
+}
+
+.rulled-grid > .card {
+  position: relative;
+}
+
+/* .rulled-grid > .card::after {
+  content: '';
+  background-color: var(--general-40);
+  position: absolute;
+  width: 100vw;
+  height: 2px;
+} */
+
+.rulled-grid > .card::before {
+  content: '';
+  background-color: var(--general-40);
+  position: absolute;
+  width: 1px;
+  height: 100vh;
+  left: 0;
+}
