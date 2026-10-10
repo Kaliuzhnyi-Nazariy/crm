@@ -1,0 +1,42 @@
+<app-info-block class="h-117.25!">
+  <div class="flex justify-between items-center">
+    <h3 class="text-block-header">Orders Over Time</h3>
+    <div class="relative flex items-center text-(--general-60)">
+      <p-select
+        [options]="formats"
+        [ngModel]="timeMode"
+        (onChange)="selectFormat($event.value)"
+        optionLabel="label"
+        optionValue="value"
+        styleClass="border-none outline-none shadow-none bg-transparent "
+        panelStyleClass="border-none outline-none shadow-none bg-white p-1 [&_ul]:flex [&_ul]:flex-col [&_ul]:gap-1.5 [&_li]:p-2 [&_li]:rounded-md "
+      />
+    </div>
+  </div>
+
+  <div class="flex items-end justify-between mt-6 mb-7">
+    <div class="flex gap-10">
+      <div class="">
+        <h4 class="text-h6">645</h4>
+        <p class="text-body-xs text-(--general-80)">Orders on May 22</p>
+      </div>
+      <div class="">
+        <h4 class="text-h6">472</h4>
+        <p class="text-body-xs text-(--general-80)">Orders on May 21</p>
+      </div>
+    </div>
+
+    <div class="flex gap-5">
+      <div class="gap-2 flex items-center">
+        <div class="size-3 rounded-xs bg-(--general-60)"></div>
+        <p class="text-body-xs text-(--general-60)">May 21</p>
+      </div>
+      <div class="gap-2 flex items-center">
+        <div class="size-3 rounded-xs bg-(--primary-100)"></div>
+        <p class="text-body-xs text-(--general-60)">May 21</p>
+      </div>
+    </div>
+  </div>
+
+  <app-data-chart [timeMode]="timeMode" />
+</app-info-block>
