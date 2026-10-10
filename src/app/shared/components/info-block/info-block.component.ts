@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, computed, input } from '@angular/core';
 
 @Component({
   imports: [],
@@ -9,4 +9,8 @@ import { Component, input } from '@angular/core';
 export class InfoBlockComponent {
   isHidden = input<boolean>(false);
   title = input<string>();
+
+  isCuttedBottom = input<boolean>(false);
+
+  styles = computed(() => `bg-white rounded-md p-7 ${this.isCuttedBottom() && 'pb-5'}`);
 }
