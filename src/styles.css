@@ -1,5 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-
 @import 'tailwindcss';
 
 :root {
@@ -104,6 +103,10 @@
 }
 .text-h6 {
   font: var(--font-h6);
+}
+
+.text-block-header {
+  font: var(--font-caption-2);
 }
 
 /* Subtitles */
