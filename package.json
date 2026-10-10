@@ -21,7 +21,11 @@
     "@angular/router": "^22.2.0",
     "@angular/ssr": "^22.2.0",
     "@primeicons/angular": "^8.0.2",
+    "@primeng/themes": "^21.0.4",
+    "chart.js": "^4.5.1",
     "express": "^5.1.0",
+    "primeicons": "^8.0.2",
+    "primeng": "^22.1.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },
