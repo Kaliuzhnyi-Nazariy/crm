@@ -5,6 +5,9 @@ import { Component, computed, input } from '@angular/core';
   selector: 'app-info-block',
   styles: ``,
   templateUrl: './info-block.component.html',
+  host: {
+    class: 'block h-full w-full',
+  },
 })
 export class InfoBlockComponent {
   isHidden = input<boolean>(false);
