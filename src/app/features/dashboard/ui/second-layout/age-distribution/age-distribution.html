@@ -1,0 +1,19 @@
+<app-info-block title="Age Distribution">
+  <app-doughnut />
+
+  <ul class="flex flex-col gap-3 mt-7">
+    @for (stat of ageStats(); track stat.age) {
+      <li class="flex items-center justify-between">
+        <div class="flex items-center gap-1">
+          <div class="size-3 rounded-xs" [style.background]="stat.color"></div>
+
+          <p class="text-body-xs text-(--general-80)">
+            {{ stat.age }}{{ stat.age === 'Others' ? '' : ' years' }}
+          </p>
+        </div>
+
+        <p style="font: var(--font-caption-1)">{{ stat.percentage }}%</p>
+      </li>
+    }
+  </ul>
+</app-info-block>
