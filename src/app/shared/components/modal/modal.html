@@ -1,0 +1,24 @@
+<p-dialog
+  header="Layouts"
+  [modal]="true"
+  [(visible)]="visible"
+  [style]="{
+    width: '60vw',
+    backgroundColor: 'var(--general-40)',
+    padding: '16px',
+    borderRadius: '4px',
+  }"
+  appendTo="body"
+>
+  <div class="flex flex-col gap-3">
+    <!-- <p>Hello, I am a Dynamic Modal!</p> -->
+    <ng-content />
+    <button
+      type="button"
+      (click)="visible.set(false)"
+      class="mt-4 px-4 py-2 w-3/5 border border-transparent outline-none bg-(--general-80) text-white rounded mx-auto cursor-pointer hover:border-(--general-80) hover:text-(--general-80) hover:bg-transparent focus::border-(--general-80) focus::text-(--general-80) focus::bg-transparent transition-colors"
+    >
+      Close
+    </button>
+  </div>
+</p-dialog>
