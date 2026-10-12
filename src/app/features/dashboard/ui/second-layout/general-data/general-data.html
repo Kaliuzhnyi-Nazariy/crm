@@ -1,0 +1,14 @@
+<div class="grid grid-cols-3 grid-rows-1 gap-7 items-stretch">
+  @for (inf of info; track inf.id) {
+    <app-info-block title="{{ inf.id }}" [isHidden]="true">
+      <div class="flex items-center justify-between">
+        <div class="">
+          <h3>{{ inf.metric }}</h3>
+          <p>{{ inf.value }}</p>
+          <p>{{ inf.percentageChange }}</p>
+        </div>
+        <app-chart [data]="inf.chartData" [color]="inf.barColor" />
+      </div>
+    </app-info-block>
+  }
+</div>
