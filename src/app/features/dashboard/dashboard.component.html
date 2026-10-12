@@ -1,4 +1,13 @@
 <app-content title="Dashboard" [secondaryFunction]="button" class="w-full">
-  <!-- <p>dashboard works!</p> -->
-  <app-first-layout />
+  @if (layout() === 'first') {
+    <app-first-layout />
+  } @else {
+    <app-second-layout />
+  }
 </app-content>
+
+<app-layouts-settings-modal
+  [(visible)]="visible"
+  ngSkipHydration
+  (layoutChange)="onLayoutChanged($event)"
+></app-layouts-settings-modal>

@@ -1,0 +1,15 @@
+<app-modal [(visible)]="visible" ngSkipHydration>
+  <p>Hello, it is check, u know?</p>
+
+  <ul class="grid grid-cols-4 grid-rows-1 gap-5 w-full">
+    <li>
+      <button type="button" (click)="pickLayout('first')">First</button>
+    </li>
+    <li>
+      <button type="button" (click)="pickLayout('second')">Second</button>
+    </li>
+    <li></li>
+    <li></li>
+  </ul>
+  <button type="button" (click)="clickHandle()">Save</button>
+</app-modal>
