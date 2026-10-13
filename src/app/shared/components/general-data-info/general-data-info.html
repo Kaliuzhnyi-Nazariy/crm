@@ -1,0 +1,25 @@
+<div class="mt-2 flex flex-col items-baseline justify-between">
+  <div class="flex flex-col" [class]="type() === 'first ' && 'flex-col-reverse'">
+    <div class="text-2xl font-semibold text-(--general-100)">
+      @if (isValute()) {
+        ${{ amount() }}
+      } @else {
+        {{ amount() }}
+      }
+    </div>
+
+    <span class="text-sm font-medium text-(--general-80)">{{ title() }}</span>
+  </div>
+
+  <span
+    [class]="percentage() >= 0 ? 'text-(--green-100)' : 'text-(--red-100)'"
+    class="text-sm font-medium flex mt-2"
+  >
+    {{ Math.abs(percentage()) }}%
+    @if (percentage() > 0) {
+      <svg data-p-icon="angle-up"></svg>
+    } @else {
+      <svg data-p-icon="angle-down"></svg>
+    }
+  </span>
+</div>
