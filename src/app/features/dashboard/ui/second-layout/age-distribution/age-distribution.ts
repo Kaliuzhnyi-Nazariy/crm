@@ -1,9 +1,10 @@
 import { afterNextRender, Component, computed, OnInit, signal } from '@angular/core';
 import { Doughnut } from './doughnut/doughnut';
 import { InfoBlockComponent } from '../../../../../shared/components/info-block/info-block.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  imports: [Doughnut, InfoBlockComponent],
+  imports: [Doughnut, InfoBlockComponent, RouterLink],
   selector: 'app-age-distribution',
   styles: ``,
   templateUrl: './age-distribution.html',
