@@ -6,6 +6,7 @@ import { Dollar } from '@primeicons/angular/dollar';
 import { ShoppingCart } from '@primeicons/angular/shopping-cart';
 import { User } from '@primeicons/angular/user';
 import { Users } from '@primeicons/angular/users';
+import { GeneralDataInfo } from '../../../../../shared/components/general-data-info/general-data-info';
 
 const ICON_MAP = {
   Dollar,
@@ -15,14 +16,14 @@ const ICON_MAP = {
 };
 
 @Component({
-  imports: [NgComponentOutlet, AngleDown, AngleUp],
+  imports: [NgComponentOutlet, AngleDown, AngleUp, GeneralDataInfo],
   selector: 'app-general-data',
   styles: ``,
   styleUrl: './general-data.component.css',
   templateUrl: './general-data.component.html',
 })
 export class GeneralDataComponent {
-  protected readonly Math = Math;
+  // protected readonly Math = Math;
 
   private rawData = signal([
     {

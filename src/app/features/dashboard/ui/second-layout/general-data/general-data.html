@@ -2,11 +2,16 @@
   @for (inf of info; track inf.id) {
     <app-info-block title="{{ inf.id }}" [isHidden]="true">
       <div class="flex items-center justify-between">
-        <div class="">
+        <!-- <div class="">
           <h3>{{ inf.metric }}</h3>
           <p>{{ inf.value }}</p>
           <p>{{ inf.percentageChange }}</p>
-        </div>
+        </div> -->
+        <app-general-data-info
+          [title]="inf.metric"
+          [amount]="inf.value"
+          [percentage]="inf.percentageChange"
+        />
         <app-chart [data]="inf.chartData" [color]="inf.barColor" />
       </div>
     </app-info-block>
