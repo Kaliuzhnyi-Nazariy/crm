@@ -15,5 +15,10 @@ export class InfoBlockComponent {
 
   isCuttedBottom = input<boolean>(false);
 
-  styles = computed(() => `bg-white rounded-md p-7 ${this.isCuttedBottom() && 'pb-5'}`);
+  extraStylesForContent = input<string>('');
+
+  styles = computed(
+    () =>
+      `bg-white rounded-md p-7 ${this.isCuttedBottom() && 'pb-5'} ${this.extraStylesForContent()}`,
+  );
 }
