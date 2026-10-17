@@ -1,0 +1,20 @@
+<app-info-block title="Top Salesman" [isCuttedBottom]="true">
+  <table class="w-full text-left mt-5 border-collapse text-body-xs leading-[1.358]!">
+    <thead>
+      <tr class="text-left border-b-2 border-(--general-60) text-(--general-80) font-bold">
+        <th class="py-3">Name</th>
+        <th class="py-3">Sold</th>
+        <th class="py-3">Amount</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-(--general-60)">
+      @for (s of salesmans; track s.name) {
+        <tr>
+          <td class="py-4">{{ s.name }}</td>
+          <td class="py-4">{{ s.sold }}</td>
+          <td class="py-4">${{ s.amount }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</app-info-block>
