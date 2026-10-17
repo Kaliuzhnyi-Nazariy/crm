@@ -1,7 +1,5 @@
 import { NgComponentOutlet } from '@angular/common';
 import { Component, computed, signal } from '@angular/core';
-import { AngleDown } from '@primeicons/angular/angle-down';
-import { AngleUp } from '@primeicons/angular/angle-up';
 import { Dollar } from '@primeicons/angular/dollar';
 import { ShoppingCart } from '@primeicons/angular/shopping-cart';
 import { User } from '@primeicons/angular/user';
@@ -16,7 +14,7 @@ const ICON_MAP = {
 };
 
 @Component({
-  imports: [NgComponentOutlet, AngleDown, AngleUp, GeneralDataInfo],
+  imports: [NgComponentOutlet, GeneralDataInfo],
   selector: 'app-general-data',
   styles: ``,
   styleUrl: './general-data.component.css',
