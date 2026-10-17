@@ -1,10 +1,8 @@
-import { NgComponentOutlet } from '@angular/common';
-import { Component, inject, input, model } from '@angular/core';
+import { Component, input, model } from '@angular/core';
 import { DialogModule } from 'primeng/dialog';
-import { DynamicDialogRef } from 'primeng/dynamicdialog';
 
 @Component({
-  imports: [DialogModule, NgComponentOutlet],
+  imports: [DialogModule],
   selector: 'app-modal',
   styles: ``,
   standalone: true,
