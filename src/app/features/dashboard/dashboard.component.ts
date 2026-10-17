@@ -5,9 +5,16 @@ import { FirstLayoutComponent } from './ui/first-layout/first-layout.component';
 import { SecondLayout } from './ui/second-layout/second-layout';
 import { LayoutsSettingsModal } from './ui/layouts-settings-modal/layouts-settings-modal';
 import { LocalStorage } from '../../core/services/local-storage';
+import { ThirdLayout } from './ui/third-layout/third-layout';
 
 @Component({
-  imports: [ContentComponent, FirstLayoutComponent, SecondLayout, LayoutsSettingsModal],
+  imports: [
+    ContentComponent,
+    FirstLayoutComponent,
+    SecondLayout,
+    LayoutsSettingsModal,
+    ThirdLayout,
+  ],
   selector: 'app-dashboard',
   styles: ``,
   templateUrl: './dashboard.component.html',

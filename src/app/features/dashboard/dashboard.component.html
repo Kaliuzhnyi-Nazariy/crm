@@ -1,8 +1,12 @@
 <app-content title="Dashboard" [secondaryFunction]="button" class="w-full">
   @if (layout() === 'first') {
     <app-first-layout />
-  } @else {
+  }
+  @if (layout() === 'second') {
     <app-second-layout />
+  }
+  @if (layout() === 'third') {
+    <app-third-layout />
   }
 </app-content>
 
