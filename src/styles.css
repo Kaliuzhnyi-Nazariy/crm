@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'tailwindcss';
+@import 'tailwindcss-primeui';
 
 :root {
   /* General */
@@ -75,13 +76,14 @@
   --font-subtitle-2: 400 1.5rem/1.4 'Inter', sans-serif;
 
   /* Body text sizes */
-  --font-body-lg: 700 1rem/1.5;
-  --font-body-md: 500 1rem/1.5;
-  --font-body-sm: 400 1rem/1.5;
-  --font-body-xs: 400 0.875rem/1.43 'Inter', sans-serif;
+  --font-body-lg: 700 1rem/1.5 'Inter', sans-serif;
+  --font-body-md: 500 1rem/1.5 'Inter', sans-serif;
+  --font-body-sm: 400 1rem/1.5 'Inter', sans-serif;
+  --font-body-xs: 400 0.875rem/20px 'Inter', sans-serif;
 
   /* Captions */
-  --font-caption-1: bold 0.875rem/1.4 'Inter', sans-serif;
+  --font-caption-1: bold 0.875rem/20px 'Inter', sans-serif;
+  /* --font-caption-1: bold 0.875rem/1.4 'Inter', sans-serif; */
   --font-caption-2: bold 1rem/1.5 'Inter', sans-serif;
 }
 
@@ -119,7 +121,7 @@
 
 /* Body Sizes */
 .text-body-lg {
-  font-size: var(--font-body-lg);
+  font: var(--font-body-lg);
 }
 .text-body-md {
   font-size: var(--font-body-md);
