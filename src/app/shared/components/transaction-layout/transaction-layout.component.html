@@ -1,0 +1,46 @@
+<div class="bg-(--primary-100) text-white p-7 rounded-md flex flex-col gap-15 h-99">
+  <h3 class="text-block-header">{{ title() }}</h3>
+  <!-- <p-progress-spinner
+    aria-label="Loading"
+    strokeWidth="8"
+    fill="transparent"
+    [value]="75"
+    class="mx-auto fill-white [&_.p-progressspinner-circle-track]:stroke-(--primary-70) [&_.p-progressspinner-circle-range]:bg-white"
+  /> -->
+  <div class="relative flex items-center justify-center size-28 mx-auto">
+    <!-- Native SVG Circular Progress Bar -->
+    <svg class="size-full -rotate-90" viewBox="0 0 36 36">
+      <!-- Background Track (Primary-70) -->
+      <circle cx="18" cy="18" r="16" fill="none" class="stroke-(--primary-70)" stroke-width="2" />
+      <!-- Active Progress Value (White) -->
+      <circle
+        cx="18"
+        cy="18"
+        r="16"
+        fill="none"
+        stroke="white"
+        stroke-width="2"
+        [attr.stroke-dasharray]="value() + ', 100'"
+      />
+    </svg>
+    <!-- stroke-linecap="round" -->
+
+    <!-- Optional: Percentage Text overlay in the middle -->
+    <span class="absolute text-h6"> {{ value() }}% </span>
+  </div>
+
+  @if (data().length > 0) {
+    <ul class="flex flex-col gap-3">
+      @for (transaction of data(); track transaction.title) {
+        <li class="flex items-center justify-between">
+          <p style="font: var(--font-body-xs)">{{ transaction.title }}:</p>
+          <p style="font: var(--font-caption-1)">{{ transaction.percentage }}%</p>
+        </li>
+      }
+    </ul>
+  } @else {
+    <div class="flex flex-1 justify-center items-center">
+      <p>No data</p>
+    </div>
+  }
+</div>
