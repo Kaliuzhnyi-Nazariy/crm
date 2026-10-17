@@ -1,4 +1,9 @@
-<app-info-block title="Age Distribution" [isCuttedBottom]="true">
+<app-info-block
+  title="Age Distribution"
+  [isCuttedBottom]="true"
+  class="h-104.5!"
+  style="height: 418px !important"
+>
   <app-doughnut />
 
   <ul class="flex flex-col gap-3 mt-7">
@@ -18,7 +23,7 @@
   </ul>
   <div class="h-px w-full bg-(--general-40) mt-6"></div>
 
-  <a routerLink="/dashboard" class="block decoration-none text-(--primary-100) mt-5"
+  <a routerLink="/dashboard" class="block decoration-none text-(--primary-100) mt-5 text-body-xs"
     >Find out more</a
   >
 </app-info-block>

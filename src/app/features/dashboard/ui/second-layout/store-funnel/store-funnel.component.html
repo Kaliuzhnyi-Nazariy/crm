@@ -1,1 +1,48 @@
-<app-info-block title="Store Funnel"></app-info-block>
+<app-info-block title="Store Funnel" [isHidden]="true" [isCuttedBottom]="true">
+  <div class="flex justify-between items-center">
+    <h2 style="font: var(--font-body-lg)">Store Funnel</h2>
+    <div class="relative flex items-center text-(--general-60)">
+      <!-- <p-select
+        [options]="daysRange"
+        [ngModel]="selectedDaysRange"
+        (onChange)="selectRange($event.value)"
+        optionLabel="label"
+        optionValue="value"
+        styleClass="border-none outline-none shadow-none bg-transparent "
+        panelStyleClass="border-none outline-none shadow-none bg-white p-1 [&_ul]:flex [&_ul]:flex-col [&_ul]:gap-1.5 [&_li]:p-2 [&_li]:rounded-md "
+      /> -->
+
+      <!-- <p-select
+        [options]="daysRange"
+        [ngModel]="selectedDaysRange"
+        (onChange)="selectRange($event.value)"
+        optionLabel="label"
+        optionValue="value"
+        styleClass="border-none outline-none shadow-none bg-transparent"
+        [pt]="{ option: { class: 'justify-between' } }"
+      /> -->
+
+      <p-select
+        [options]="daysRange"
+        [(ngModel)]="selectedDaysRange"
+        optionLabel="label"
+        optionValue="value"
+        placeholder="Select a language"
+        class="w-full md:w-56 bg-black"
+        [pt]="{ option: { class: 'bg-black' } }"
+      />
+
+      <!-- panelStyleClass="custom-funnel-panel" -->
+    </div>
+  </div>
+  <div class="mt-0.5 flex items-center gap-3">
+    <p class="text-body-xs">
+      Conversion Rate: <span class="font-bold text-[14px]">{{ conversionRate }}%</span>
+    </p>
+    <span class="px-2 bg-(--green-40) text-(--green-100) raounded-sm">
+      <p class="">{{ riseRate }}% Increase</p>
+    </span>
+  </div>
+
+  <app-statistics />
+</app-info-block>

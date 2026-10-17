@@ -6,7 +6,12 @@ import { RouterLink } from '@angular/router';
 @Component({
   imports: [Doughnut, InfoBlockComponent, RouterLink],
   selector: 'app-age-distribution',
-  styles: ``,
+  styles: `
+    :host {
+      display: block;
+      height: 418px;
+    }
+  `,
   templateUrl: './age-distribution.html',
 })
 export class AgeDistribution {

@@ -1,0 +1,35 @@
+<app-info-block
+  title="Most Visited Pages"
+  class="h-99! flex flex-col"
+  style="display: flex; flex-direction: column; height: 100%"
+  extraStylesForContent="flex flex-col flex-1"
+  [isCuttedBottom]="true"
+>
+  @if (visitStatistics.length > 0) {
+    <table class="w-full text-left mt-5 border-collapse text-body-xs leading-[1.358]!">
+      <thead>
+        <tr class="text-left border-b-2 border-(--general-60) text-(--general-80) font-bold">
+          <th class="py-3">Page Name</th>
+          <th class="py-3">Visits</th>
+          <th class="py-3">Unique Visits</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-(--general-60)">
+        @for (vs of visitStatistics; track vs.link) {
+          <tr class="outline-b last:outline-b-none outline-b-(--general-60)">
+            <!-- <tr class="border-b last:border-none border-(--general-60)"> -->
+            <td class="py-4">
+              <b>{{ vs.link }}</b>
+            </td>
+            <td class="py-4">{{ vs.visits }}</td>
+            <td class="py-4">{{ vs.uniqueVisits }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  } @else {
+    <div class="flex-1 flex items-center justify-center">
+      <p>No data available</p>
+    </div>
+  }
+</app-info-block>
