@@ -6,6 +6,7 @@ import { SecondLayout } from './ui/second-layout/second-layout';
 import { LayoutsSettingsModal } from './ui/layouts-settings-modal/layouts-settings-modal';
 import { LocalStorage } from '../../core/services/local-storage';
 import { ThirdLayout } from './ui/third-layout/third-layout';
+import { ForthLayout } from './ui/forth-layout/forth-layout';
 
 @Component({
   imports: [
@@ -14,6 +15,7 @@ import { ThirdLayout } from './ui/third-layout/third-layout';
     SecondLayout,
     LayoutsSettingsModal,
     ThirdLayout,
+    ForthLayout,
   ],
   selector: 'app-dashboard',
   styles: ``,
