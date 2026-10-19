@@ -1,0 +1,12 @@
+<app-info-block title="Users statistics" [isHidden]="true">
+  <div class="grid grid-cols-4 grid-rows-1 rulled-grid">
+    @for (stat of statistics; track stat.label) {
+      <app-general-data-info
+        [title]="stat.label"
+        [amount]="stat.value"
+        [percentage]="stat.percentage"
+        class="card"
+      ></app-general-data-info>
+    }
+  </div>
+</app-info-block>

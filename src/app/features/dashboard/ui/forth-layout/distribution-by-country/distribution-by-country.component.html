@@ -1,0 +1,31 @@
+<app-info-block
+  title="Distribution By Country"
+  class="h-99! flex flex-col text-body-xs leading-[1.358]!"
+  [isCuttedBottom]="true"
+>
+  <table class="w-full border-collapse text-left mt-5">
+    <thead>
+      <tr>
+        <th class="border-b-2 border-(--general-60) py-3">Country</th>
+        <th class="border-b-2 border-(--general-60) py-3">Percentage</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-(--general-60)">
+      @for (stat of stats; track stat.country) {
+        <tr>
+          <td class="py-4">{{ stat.country }}</td>
+          <!-- <td></td> -->
+          <td class="flex items-center gap-4 py-4">
+            <p>{{ stat.percentage }}%</p>
+            <div class="h-2 w-full rounded-full bg-(--general-40)">
+              <div
+                class="h-full bg-(--primary-100) rounded-full transition-all duration-500"
+                [style.width.%]="stat.percentage"
+              ></div>
+            </div>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</app-info-block>

@@ -1,0 +1,29 @@
+<app-info-block>
+  <div class="flex items-center justify-between">
+    <h3 class="text-block-header">Unique Visits Over Time</h3>
+    @if (data) {
+      <p-select
+        [options]="formats"
+        [ngModel]="timeMode()"
+        (onChange)="selectFormat($event.value)"
+        optionLabel="label"
+        optionValue="value"
+        styleClass="border-none outline-none shadow-none bg-transparent "
+        panelStyleClass="border-none outline-none shadow-none bg-white p-1 [&_ul]:flex [&_ul]:flex-col [&_ul]:gap-1.5 [&_li]:p-2 [&_li]:rounded-md "
+      />
+    }
+  </div>
+  <div class="flex items-center gap-5">
+    <div class="flex items-center gap-2">
+      <div class="size-3 bg-(--green-80) rounded-xs"></div>
+      <p class="text-body-xs text-(--general-80)">New Users</p>
+    </div>
+    <div class="flex items-center gap-2">
+      <div class="size-3 bg-(--primary-100) rounded-xs"></div>
+      <p class="text-body-xs text-(--general-80)">Returning Users</p>
+    </div>
+  </div>
+  @if (data) {
+    <p-chart type="line" [data]="data" [options]="options" class="mt-6" height="296" />
+  }
+</app-info-block>
