@@ -40,6 +40,7 @@ export class Statistics {
       },
       tooltip: {
         displayColors: false,
+        enabled: false,
       },
     },
     scales: {

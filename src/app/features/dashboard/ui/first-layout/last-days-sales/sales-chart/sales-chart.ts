@@ -51,13 +51,24 @@ export class SalesChart implements OnInit {
         colors: { enabled: false },
         legend: { display: false },
         tooltip: {
+          backgroundColor: this.tooltipColor,
+
+          padding: 12,
+
           callbacks: {
             title: (context: TooltipItem<ChartType>[]) => {
               const firstItem = context[0];
 
               return `$${firstItem.formattedValue}`;
             },
+
+            label: () => '',
+            // beforeBody: () => '',
+            // label: () => null,
+            // afterBody: () => '',
           },
+          bodySpacing: 0,
+          titleMarginBottom: 0,
         },
       },
       scales: {

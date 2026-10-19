@@ -1,5 +1,6 @@
 import { isPlatformBrowser } from '@angular/common';
 import { Component, computed, effect, Inject, input, PLATFORM_ID } from '@angular/core';
+import { ChartType, TooltipItem } from 'chart.js';
 import { ChartModule } from 'primeng/chart';
 
 @Component({
@@ -12,12 +13,15 @@ export class ChartComponent {
   data = input<number[]>([]);
   color = input<'primary' | 'secondary' | 'accent'>('primary');
 
+  tooltipMessage = input<string>('');
+
   basicOptions: any;
   basicData: any;
   generalColor = 'gray';
   priamaryColor = 'blue';
   accentColor = 'yellow';
   secondaryColor = 'green';
+  tooltipColor = 'black';
 
   styleColor = computed(() => {
     if (this.color() === 'primary') {
@@ -44,6 +48,9 @@ export class ChartComponent {
         this.secondaryColor = getComputedStyle(document.documentElement)
           .getPropertyValue('--green-60')
           .trim();
+        this.tooltipColor = getComputedStyle(document.documentElement)
+          .getPropertyValue('--general-90')
+          .trim();
 
         this.basicData = {
           labels: ['1', '2', '3', '4', '5', '6'],
@@ -64,59 +71,41 @@ export class ChartComponent {
           ],
         };
 
-        this.basicOptions = {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            colors: { enabled: false },
-            legend: { display: false },
-            // tooltip: {
-            //   position: 'nearest',
-            //   // yAlign: 'bottom',
-            //   backgroundColor: this.tooltipColor,
-            //   displayColors: false,
-            //   titleAlign: 'center',
-            //   bodyAlign: 'center',
+        this.basicOptions = computed(() => {
+          const message = this.tooltipMessage();
 
-            //   padding: 12,
-            //   cornerRadius: 4,
+          const hasMessage = !!message && message.length > 0;
 
-            //   titleFont: {
-            //     // family: 'Inter',
-            //     weight: 700,
-            //     size: 12,
-            //     // lineHeight: 1.5,
-            //   },
+          return {
+            plugins: {
+              colors: { enabled: false },
+              legend: { display: false },
+              tooltip: {
+                enabled: hasMessage,
+                displayColors: false,
 
-            //   bodyFont: {
-            //     weight: 400,
-            //     size: 12,
-            //     // lineHeight: 1.5,
-            //   },
+                backgroundColor: this.tooltipColor,
+                padding: 12,
 
-            //   callbacks: {
-            //     title: (tooltipItems: any) => {
-            //       const item = tooltipItems[0];
-
-            //       return `${item.formattedValue} orders`;
-            //     },
-
-            //     label: (context: any) => {
-            //       const formattedTime = context.label.replace(/(am|pm)/i, ' \$1').toUpperCase();
-            //       return `May 22, ${formattedTime}`;
-            //     },
-            //   },
-            // },
-          },
-          scales: {
-            y: {
-              display: false,
+                callbacks: {
+                  title: (context: TooltipItem<ChartType>[]) => {
+                    const firstItem = context[0];
+                    return `${firstItem.formattedValue} ${message}`;
+                  },
+                  label: () => '',
+                },
+                bodySpacing: 0,
+                titleMarginBottom: 0,
+              },
             },
-            x: {
-              display: false,
+            scales: {
+              y: { display: false },
+              x: {
+                display: false,
+              },
             },
-          },
-        };
+          };
+        });
       }
     });
   }

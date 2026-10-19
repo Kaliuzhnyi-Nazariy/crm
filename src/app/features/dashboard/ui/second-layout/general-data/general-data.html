@@ -12,7 +12,7 @@
           [amount]="inf.value"
           [percentage]="inf.percentageChange"
         />
-        <app-chart [data]="inf.chartData" [color]="inf.barColor" />
+        <app-chart [data]="inf.chartData" [color]="inf.barColor" [tooltipMessage]="inf.metric" />
       </div>
     </app-info-block>
   }

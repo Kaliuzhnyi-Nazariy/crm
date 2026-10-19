@@ -57,7 +57,6 @@ export class VisitsOverTimeComponent implements OnInit {
     '11pm',
   ];
 
-  // Magazyn na pełne, wygenerowane na starcie dane (24 godziny)
   private masterDatasetFirst: number[] = [];
   private masterDatasetSecond: number[] = [];
 
@@ -65,7 +64,6 @@ export class VisitsOverTimeComponent implements OnInit {
   options: any;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
-    // Reagujemy na zmianę suwaka czasu, ale podmieniamy tylko labele i wycinamy dane z mastera
     effect(() => {
       const mode = this.timeMode();
       if (this.masterDatasetFirst.length > 0) {
@@ -76,7 +74,6 @@ export class VisitsOverTimeComponent implements OnInit {
 
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
-      // 1. Pobieranie stylów CSS z DOM (bezpieczne tylko w przeglądarce)
       this.generalColor =
         getComputedStyle(document.documentElement).getPropertyValue('--general-60').trim() ||
         'gray';
@@ -94,7 +91,6 @@ export class VisitsOverTimeComponent implements OnInit {
         .toLowerCase()
         .replace(/\s+/g, '');
 
-      // 2. Generujemy stałą pulę danych (24 punkty) RAZ na początku
       this.masterDatasetFirst = this.hours.map(
         () => Math.floor(Math.random() * (2500 - 1000 + 1)) + 40,
       );
@@ -102,7 +98,6 @@ export class VisitsOverTimeComponent implements OnInit {
         () => Math.floor(Math.random() * (800 - 250 + 1)) + 15,
       );
 
-      // 3. Budujemy konfigurację opcji wykresu (nie musi się zmieniać dynamicznie)
       this.options = {
         responsive: true,
         maintainAspectRatio: false,
@@ -120,7 +115,7 @@ export class VisitsOverTimeComponent implements OnInit {
             titleFont: { weight: 700, size: 12 },
             bodyFont: { weight: 400, size: 12 },
             callbacks: {
-              title: (tooltipItems: any) => `${tooltipItems[0].formattedValue} orders`,
+              title: (tooltipItems: any) => `${tooltipItems[0].formattedValue} visits`,
               label: (context: any) =>
                 `May 22, ${context.label.replace(/(am|pm)/i, ' \$1').toUpperCase()}`,
             },
@@ -139,7 +134,6 @@ export class VisitsOverTimeComponent implements OnInit {
         },
       };
 
-      // 4. Pierwsze wyrenderowanie danych dla domyślnego trybu '12h'
       this.updateChartStructure(this.timeMode());
     }
   }
@@ -152,7 +146,6 @@ export class VisitsOverTimeComponent implements OnInit {
     const currentIndex = this.hours.indexOf(this.currentTime);
 
     if (mode === '12h' && currentIndex !== -1) {
-      // Wycinamy ostatnie 12 godzin kończąc na aktualnej godzinie
       for (let i = 11; i >= 0; i--) {
         const targetIndex = (currentIndex - i + 24) % 24;
         labelTime.push(this.hours[targetIndex]);
@@ -160,7 +153,6 @@ export class VisitsOverTimeComponent implements OnInit {
         dataSecond.push(this.masterDatasetSecond[targetIndex]);
       }
     } else {
-      // Dla 24h pokazujemy pełny cykl dnia od aktualnej godziny wstecz
       for (let i = 23; i >= 0; i--) {
         const targetIndex = (currentIndex - i + 24) % 24;
         labelTime.push(this.hours[targetIndex]);
@@ -169,7 +161,6 @@ export class VisitsOverTimeComponent implements OnInit {
       }
     }
 
-    // Nadpisujemy obiekt danych nową referencją (wymagane przez Chart.js do odświeżenia)
     this.data = {
       labels: labelTime,
       datasets: [

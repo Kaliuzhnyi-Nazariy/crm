@@ -4,6 +4,7 @@ import { ChartModule } from 'primeng/chart';
 import { InfoBlockComponent } from '../../../../../shared/components/info-block/info-block.component';
 import { FormsModule } from '@angular/forms';
 import { Select } from 'primeng/select';
+import { ChartType, TooltipItem } from 'chart.js';
 
 type ReportMonthesRange = '6m' | '12m' | '24m';
 
@@ -86,6 +87,8 @@ export class FinanceReportComponent {
   ];
 
   gray = getComputedStyle(document.documentElement).getPropertyValue('--general-80') || 'gray';
+  tooltipColor =
+    getComputedStyle(document.documentElement).getPropertyValue('--general-90') || 'black';
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     effect(() => {
@@ -93,6 +96,7 @@ export class FinanceReportComponent {
 
       let chartLabels: string[] = [];
       let chartDataValues: number[] = [];
+      let chartRevenueValues: number[] = [];
 
       if (isPlatformBrowser(this.platformId)) {
         const today = new Date();
@@ -116,7 +120,8 @@ export class FinanceReportComponent {
             (d) => d.year === targetYearFull && d.month === targetMonthNameFull,
           );
 
-          chartDataValues.push(match ? match.revenue : 0);
+          chartDataValues.push(match ? match.orders : 0);
+          chartRevenueValues.push(match ? match.revenue : 0);
         }
       }
 
@@ -124,7 +129,7 @@ export class FinanceReportComponent {
         labels: chartLabels,
         datasets: [
           {
-            label: 'Revenue',
+            label: 'Orders',
             data: chartDataValues,
             backgroundColor: '#3b82f6',
             borderColor: '#3b82f6',
@@ -137,6 +142,31 @@ export class FinanceReportComponent {
         maintainAspectRatio: false,
         plugins: {
           legend: { display: false },
+
+          tooltip: {
+            callbacks: {
+              title: (context: TooltipItem<ChartType>[]) => {
+                const firstItem = context[0];
+
+                const index = firstItem.dataIndex;
+
+                const revenue = chartRevenueValues[index];
+
+                return `$${revenue}`;
+              },
+              label: (context: TooltipItem<ChartType>) => {
+                const firstItem = context;
+
+                return `${firstItem.formattedValue} orders`;
+              },
+            },
+            displayColors: false,
+
+            backgroundColor: this.tooltipColor,
+            padding: 12,
+
+            titleAlign: 'center',
+          },
         },
         scales: {
           y: {

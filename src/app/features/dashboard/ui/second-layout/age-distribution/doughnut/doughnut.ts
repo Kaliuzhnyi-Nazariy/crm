@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ChartType, TooltipItem } from 'chart.js';
 import { ChartModule } from 'primeng/chart';
 
 @Component({
@@ -37,9 +38,24 @@ export class Doughnut implements OnInit {
     };
 
     this.options = {
-      cutout: '60%',
+      cutout: '75%',
       plugins: {
         legend: { display: false },
+        tooltip: {
+          callbacks: {
+            title: (context: TooltipItem<ChartType>[]) => {
+              const firstItem = context[0];
+              return `${firstItem.label}`;
+            },
+            label: () => '',
+          },
+
+          backgroundColor: documentStyle.getPropertyValue('--general-90') || 'black',
+
+          padding: 12,
+          bodySpacing: 0,
+          titleMarginBottom: 0,
+        },
       },
     };
   }
