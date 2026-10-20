@@ -1,19 +1,17 @@
-<app-modal [(visible)]="visible" ngSkipHydration>
-  <p>Hello, it is check, u know?</p>
+<app-modal [(visible)]="visible" ngSkipHydration header="Select layout">
+  <p class="mx-auto mt-6">Select layout that will show valuable information for you!</p>
 
-  <ul class="grid grid-cols-4 grid-rows-1 gap-5 w-full">
-    <li>
-      <button type="button" (click)="pickLayout('first')">First</button>
-    </li>
-    <li>
-      <button type="button" (click)="pickLayout('second')">Second</button>
-    </li>
-    <li>
-      <button type="button" (click)="pickLayout('third')">Third</button>
-    </li>
-    <li>
-      <button type="button" (click)="pickLayout('forth')">Forth</button>
-    </li>
+  <ul class="grid grid-cols-4 grid-rows-1 gap-5 w-full mt-4">
+    @for (layout of layouts; track layout.id) {
+      <app-layout-card
+        [data]="layout"
+        [layoutPicked]="layoutPicked"
+        (layoutSelected)="pickLayout($event)"
+      />
+    }
   </ul>
-  <button type="button" (click)="clickHandle()">Save</button>
+
+  <app-modal-button [addMarginTop]="true" type="main" [function]="clickHandle"
+    >Save</app-modal-button
+  >
 </app-modal>

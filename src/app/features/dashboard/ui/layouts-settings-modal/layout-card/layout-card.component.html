@@ -1,0 +1,14 @@
+<li class="justify-self-center w-full h-full grow">
+  <button type="button" (click)="pickLayout(data().id)" [class]="styles(data().id)()">
+    <div class="w-full aspect-3/2 bg-(--primary-60) rounded-t-sm shrink-0"></div>
+    <div class="p-4 text-left">
+      <p style="font: var(--font-caption-2)">Contains:</p>
+
+      <ul class="text-body-xs mt-2 gap-1 flex flex-col list-disc list-inside">
+        @for (c of data().contains; track c) {
+          <li>{{ c }}</li>
+        }
+      </ul>
+    </div>
+  </button>
+</li>
