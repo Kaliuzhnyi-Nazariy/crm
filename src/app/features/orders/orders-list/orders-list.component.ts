@@ -3,22 +3,21 @@ import { ContentComponent } from '../../../core/layout/content/content.component
 import { Plus } from '@primeicons/angular/plus';
 import { InfoBlockComponent } from '../../../shared/components/info-block/info-block.component';
 import { EmptyListComponent } from './empty-list/empty-list.component';
-import { OrdersTableComponent } from './orders-table/orders-table.component';
 import { Order } from '../types';
 import { PaginationComponent } from '../../../shared/components/pagination/pagination.component';
 import { Paginator } from '../../../core/services/paginator/paginator';
 import { FilterBlockComponent } from '../../../shared/filters/filter-block/filter-block.component';
+import { Router } from '@angular/router';
+import { OrdersTableComponent } from './orders-table/orders-table.component';
 
 @Component({
   imports: [
     ContentComponent,
     InfoBlockComponent,
-    // ButtonComponent,
     EmptyListComponent,
-    OrdersTableComponent,
-    // PaginatorModule,
     PaginationComponent,
     FilterBlockComponent,
+    OrdersTableComponent,
   ],
   selector: 'app-orders-list',
   styles: `
@@ -61,7 +60,7 @@ export class OrdersListComponent {
       order: '#23534D',
       date: 'May 5, 4:12 PM',
       customer: 'Francisco Henry',
-      payment_status: 'Paid',
+      payment_status: 'Pending',
       order_status: 'Shipped',
       total: 29.74,
     },
@@ -93,7 +92,7 @@ export class OrdersListComponent {
       order: '#56212D',
       date: 'May 5, 4:08 PM',
       customer: 'Nettie Tyler',
-      payment_status: 'Paid',
+      payment_status: 'Pending',
       order_status: 'Ready',
       total: 36.79,
     },
@@ -102,7 +101,7 @@ export class OrdersListComponent {
       date: 'May 5, 4:08 PM',
       customer: 'Lora Weaver',
       payment_status: 'Paid',
-      order_status: 'Shipped',
+      order_status: 'Received',
       total: 28.78,
     },
     {
@@ -118,14 +117,14 @@ export class OrdersListComponent {
       date: 'May 5, 4:08 PM',
       customer: 'Lora Weaver',
       payment_status: 'Paid',
-      order_status: 'Shipped',
+      order_status: 'Received',
       total: 28.78,
     },
     {
       order: '#12512Q',
       date: 'May 5, 4:05 PM',
       customer: 'Vincent Cannon',
-      payment_status: 'Paid',
+      payment_status: 'Pending',
       order_status: 'Shipped',
       total: 96.46,
     },
@@ -154,8 +153,6 @@ export class OrdersListComponent {
   headerCheckboxHandler = () => {
     const currentOrders = this.computedOrders();
     const currentSelected = this.selectedOrders();
-
-    console.log(currentOrders);
 
     const allSelected = currentOrders.every((o) => currentSelected.includes(o.order));
 
@@ -189,13 +186,15 @@ export class OrdersListComponent {
     });
   };
 
+  constructor(private router: Router) {}
+
   addOrder = {
     name: 'Add order',
     icon: Plus,
-    fn: () => alert('add order'),
+    fn: () => this.router.navigate(['/orders/create']),
   };
 
-  export = {
+  exportButton = {
     name: 'Export',
     fn: () => alert('Exported'),
   };

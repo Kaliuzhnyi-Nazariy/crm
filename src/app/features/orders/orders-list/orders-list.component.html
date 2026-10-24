@@ -1,6 +1,6 @@
 <app-content
   title="Orders"
-  [secondaryFunction]="export"
+  [secondaryFunction]="exportButton"
   [mainFunction]="addOrder"
   class="flex flex-col flex-1 min-h-0 w-full"
   [scrollable]="false"
@@ -23,12 +23,29 @@
 
       <app-orders-table
         [orders]="computedOrders()"
+        [selectedOrders]="selectedOrders()"
+        [checkboxHandler]="checkboxHandler"
+        [headerCheckboxHandler]="headerCheckboxHandler"
+        [selectAllOrdersCheckbox]="selectAllOrdersCheckbox()"
+        class="flex flex-col w-full flex-1 min-h-0"
+      />
+
+      <!-- <app-orders-table
+        [orders]="computedOrders()"
         class="flex flex-col w-full flex-1 min-h-0 overflow-y-auto scrollbar-track-transparent"
         [selectedOrders]="selectedOrders()"
         [checkboxHandler]="checkboxHandler"
         [headerCheckboxHandler]="headerCheckboxHandler"
         [selectAllOrdersCheckbox]="selectAllOrdersCheckbox()"
-      />
+      /> -->
+      <!-- <app-table
+        [orders]="computedOrders()"
+        class="flex flex-col w-full flex-1 min-h-0 overflow-y-auto scrollbar-track-transparent"
+        [selectedOrders]="selectedOrders()"
+        [checkboxHandler]="checkboxHandler"
+        [headerCheckboxHandler]="headerCheckboxHandler"
+        [selectAllOrdersCheckbox]="selectAllOrdersCheckbox()"
+      /> -->
 
       <app-pagination
         [allProductsLength]="orders.length"
