@@ -1,1 +1,44 @@
-<p>orders-list works!</p>
+<app-content
+  title="Orders"
+  [secondaryFunction]="export"
+  [mainFunction]="addOrder"
+  class="flex flex-col flex-1 min-h-0 w-full"
+  [scrollable]="false"
+>
+  <app-info-block
+    [isHidden]="true"
+    [extraStylesForContent]="styles()"
+    class="flex flex-col flex-1 min-h-0 w-full h-full"
+  >
+    @if (computedOrders().length > 0) {
+      <app-filter-block
+        searchParamName="searchOrder"
+        filterParamName="orderFilters"
+        [filters]="filters"
+        [deleteItem]="deleteOrder"
+        [editItem]="editOrder"
+        class="shrink-0 mb-4"
+        [disabledActions]="actionsDisabled()"
+      />
+
+      <app-orders-table
+        [orders]="computedOrders()"
+        class="flex flex-col w-full flex-1 min-h-0 overflow-y-auto scrollbar-track-transparent"
+        [selectedOrders]="selectedOrders()"
+        [checkboxHandler]="checkboxHandler"
+        [headerCheckboxHandler]="headerCheckboxHandler"
+        [selectAllOrdersCheckbox]="selectAllOrdersCheckbox()"
+      />
+
+      <app-pagination
+        [allProductsLength]="orders.length"
+        [productsPerPage]="paginator.perPage()"
+        [(currentPage)]="paginator.page"
+        class="shrink-0 mt-auto pt-4"
+      >
+      </app-pagination>
+    } @else {
+      <app-empty-list [addOrder]="addOrder" class="flex flex-col items-center" />
+    }
+  </app-info-block>
+</app-content>
