@@ -10,7 +10,7 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
   //   class: 'flex flex-col flex-1 min-h-0 w-full',
   // },
   host: {
-    class: 'flex flex-col h-full min-h-0 w-full mb-10 pb-10',
+    class: 'flex flex-col h-full min-h-0 w-full ',
   },
   templateUrl: './content.component.html',
 })
@@ -19,4 +19,6 @@ export class ContentComponent {
 
   mainFunction = input<Button>();
   secondaryFunction = input<Button>();
+
+  scrollable = input<boolean>(true);
 }

@@ -16,7 +16,12 @@
   <!-- <div
     class="mt-7 flex flex-col flex-1 min-h-0 overflow-y-auto scrollbar-track-transparent mb-10 pb-10"
   > -->
-  <div class="mt-7 flex flex-col flex-1 min-h-0 overflow-y-auto scrollbar-track-transparent">
+  <div
+    class="mt-7 flex flex-col flex-1 min-h-0"
+    [class.overflow-y-auto]="scrollable()"
+    [class.scrollbar-track-transparent]="scrollable()"
+    [class.overflow-hidden]="!scrollable()"
+  >
     <ng-content></ng-content>
   </div>
 </div>
