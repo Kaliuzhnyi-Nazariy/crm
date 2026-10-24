@@ -1,0 +1,201 @@
+<!-- <div class="flex flex-col w-full flex-1 min-h-0 mt-5">
+  <table
+    class="w-full border-collapse text-left text-body-xs leading-[1.358]! flex flex-col flex-1 min-h-0"
+  >
+    <thead class="flex w-full shrink-0">
+      <tr class="text-(--general-80) w-full flex items-center">
+        <th class="w-[5%] headerStyles">
+          <input
+            type="checkbox"
+            class="rounded border-gray-300 cursor-pointer"
+            (change)="headerCheckboxHandler()()"
+            [checked]="selectAllOrdersCheckbox()"
+          />
+        </th>
+        <th class="w-[12.5%] headerStyles">Order</th>
+        <th class="w-[12.5%] headerStyles">Date</th>
+        <th class="w-[17%] headerStyles">Customer</th>
+        <th class="w-[17%] headerStyles">Payment status</th>
+        <th class="w-[17%] headerStyles">Order Status</th>
+        <th class="w-[19%] pr-4 headerStyles">Total</th>
+      </tr>
+    </thead>
+
+    <tbody
+      class="divide-y divide-(--general-40) text-(--general-100) font-light w-full flex flex-col flex-1 min-h-0 overflow-y-auto"
+    >
+      @for (o of orders(); track o.order) {
+        <tr class="w-full flex items-center shrink-0">
+          <td class="w-[5%] tableLineStyles()">
+            <input
+              type="checkbox"
+              class="rounded border-gray-300 cursor-pointer"
+              [checked]="isChecked(o.order)"
+              (change)="checkboxHandler()(o.order)"
+            />
+          </td>
+          <td class="w-[12.5%] tableLineStyles() font-bold">{{ o.order }}</td>
+          <td class="w-[12.5%] tableLineStyles()">{{ o.date }}</td>
+          <td class="w-[17%] tableLineStyles()">{{ o.customer }}</td>
+          <td class="w-[17%] tableLineStyles()">{{ o.payment_status }}</td>
+          <td class="w-[17%] tableLineStyles()">{{ o.order_status }}</td>
+          <td class="w-[19%] tableLineStyles() pr-4">{{ o.total }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div> -->
+
+<!-- <div class="flex flex-col w-full flex-1 min-h-0 mt-5">
+  <table
+    class="w-full border-collapse text-left text-body-xs leading-[1.358]! flex flex-col flex-1 min-h-0"
+  >
+    <thead class="flex w-full shrink-0">
+      <tr class="text-(--general-80) w-full flex items-center">
+        <th class="w-[5%] {{ headeeStyles }}">
+          <input
+            type="checkbox"
+            class="rounded border-gray-300 cursor-pointer"
+            (change)="headerCheckboxHandler()()"
+            [checked]="selectAllOrdersCheckbox()"
+          />
+        </th>
+        @for (col of columns(); track col.header) {
+          <th class="{{ col.widthClass }} {{ headeeStyles }}">
+            {{ col.header }}
+          </th>
+        }
+      </tr>
+    </thead>
+
+    <tbody
+      class="divide-y divide-(--general-40) text-(--general-100) font-light w-full flex flex-col flex-1 min-h-0 overflow-y-auto"
+    >
+      @for (o of orders(); track trackIdFn()(o)) {
+        <tr class="w-full flex items-center shrink-0">
+          <td class="w-[5%] {{ tableLineStyles }}">
+            <input
+              type="checkbox"
+              class="rounded border-gray-300 cursor-pointer"
+              [checked]="isChecked(o)"
+              (change)="checkboxHandler()(trackIdFn()(o))"
+            />
+          </td>
+          @for (col of columns(); track col.key) {
+            <td class="{{ col.widthClass }} {{ tableLineStyles }} {{ col.cellClass || '' }}">
+              {{ getCellValue(o, col.key) }}
+            </td>
+          }
+        </tr>
+      } @empty {
+        <tr class="w-full flex justify-center py-8 text-gray-500">
+          <td class="py-4">No data available.</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div> -->
+
+<!-- <div class="flex flex-col w-full flex-1 min-h-0 mt-5">
+  <table
+    class="w-full border-collapse text-left text-body-xs leading-[1.358]! flex flex-col flex-1 min-h-0"
+  >
+    <thead class="flex w-full shrink-0">
+      <tr class="text-(--general-80) w-full flex items-center">
+        <th class="w-[5%] {{ headerStyles }}">
+          <input
+            type="checkbox"
+            class="rounded border-gray-300 cursor-pointer"
+            (change)="headerCheckboxHandler()()"
+            [checked]="selectAllOrdersCheckbox()"
+          />
+        </th>
+        @if (headerTemplate()) {
+          <ng-container [ngTemplateOutlet]="headerTemplate()!" />
+        }
+      </tr>
+    </thead>
+
+    <tbody
+      class="text-(--general-100) font-light w-full flex flex-col flex-1 min-h-0 overflow-y-auto"
+    >
+      @for (o of orders(); track trackIdFn()(o)) {
+        <tr class="w-full flex items-center shrink-0">
+          <td class="w-[5%] {{ tableLineStyles }}">
+            <input
+              type="checkbox"
+              class="rounded border-gray-300 cursor-pointer"
+              [checked]="isChecked(o)"
+              (change)="checkboxHandler()(trackIdFn()(o))"
+            />
+          </td>
+          @if (rowTemplate()) {
+            <ng-container
+              [ngTemplateOutlet]="rowTemplate()!"
+              [ngTemplateOutletContext]="{ $implicit: o }"
+            />
+          }
+        </tr>
+      } @empty {
+        <tr class="w-full flex justify-center py-8 text-gray-500">
+          <td class="py-4">No data available.</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div> -->
+
+<div class="flex flex-col w-full flex-1 min-h-0 mt-5">
+  <!-- <table
+    class="w-full border-collapse text-left text-body-xs leading-[1.358]! flex flex-col flex-1 min-h-0"
+  > -->
+  <table
+    class="w-full border-collapse text-left text-body-xs leading-[1.358]! flex flex-col flex-1 min-h-0"
+  >
+    <thead class="flex w-full shrink-0">
+      <tr class="text-(--general-80) w-full flex items-center">
+        <th class="w-[5%] flex items-center justify-start">
+          <input
+            type="checkbox"
+            class="rounded border-gray-300 cursor-pointer size-5 mx-auto"
+            (change)="headerCheckboxHandler()()"
+            [checked]="selectAllOrdersCheckbox()"
+          />
+        </th>
+        <!-- Dynamiczne nagłówki kolumn wstrzyknięte z zewnątrz -->
+        @if (headerTemplate()) {
+          <ng-container [ngTemplateOutlet]="headerTemplate()!" />
+        }
+      </tr>
+    </thead>
+
+    <tbody
+      class="text-(--general-100) font-light w-full flex flex-col flex-1 min-h-0 overflow-y-auto scroll"
+    >
+      @for (o of orders(); track trackIdFn()(o)) {
+        <tr class="w-full flex items-center shrink-0">
+          <!-- Komórka z checkboxem wiersza dziedziczy style td automatycznie -->
+          <td class="w-[5%] flex items-center justify-start">
+            <input
+              type="checkbox"
+              class="rounded border-gray-300 cursor-pointer size-5 mx-auto"
+              [checked]="isChecked(o)"
+              (change)="checkboxHandler()(trackIdFn()(o))"
+            />
+          </td>
+          <!-- Dynamiczny wiersz wstrzyknięty z zewnątrz -->
+          @if (rowTemplate()) {
+            <ng-container
+              [ngTemplateOutlet]="rowTemplate()!"
+              [ngTemplateOutletContext]="{ $implicit: o }"
+            />
+          }
+        </tr>
+      } @empty {
+        <tr class="w-full flex justify-center py-8 text-gray-500">
+          <td class="py-4 text-center w-full">No data available.</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
