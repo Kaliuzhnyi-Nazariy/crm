@@ -1,0 +1,40 @@
+<div class="flex justify-between items-center mt-7 text-body-sm text-(--general-80)">
+  <div class="flex gap-3 items-center">
+    <button
+      type="button"
+      class="size-9 flex items-center justify-center cursor-pointer text-(--general-70) disabled:opacity-50"
+      [disabled]="isButtonDisabled('left')"
+      (click)="leftClick()"
+    >
+      <svg data-p-icon="arrow-left" id="left" class="size-4"></svg>
+    </button>
+
+    <ul class="list-none flex gap-1 items-center">
+      @for (p of pages(); track $index) {
+        @if (p === '...') {
+          <li class="size-9 flex items-center justify-center select-none">...</li>
+        } @else {
+          <button
+            (click)="setPage(p)"
+            [class.bg-(--primary-30)]="p === currentPage()"
+            [class.text-(--primary-100)]="p === currentPage()"
+            [class.hover:bg-gray-100]="p !== currentPage()"
+            class="size-9 rounded flex items-center justify-center border border-transparent transition-colors font-medium text-sm cursor-pointer"
+          >
+            {{ p }}
+          </button>
+        }
+      }
+    </ul>
+
+    <button
+      type="button"
+      class="size-9 flex items-center justify-center cursor-pointer text-(--general-70) disabled:opacity-50"
+      (click)="rightClick()"
+      [disabled]="isButtonDisabled('right')"
+    >
+      <svg data-p-icon="arrow-right" id="right" class="size-4 text-(--general-70)"></svg>
+    </button>
+  </div>
+  <p>{{ allProductsLength() }} Results</p>
+</div>
