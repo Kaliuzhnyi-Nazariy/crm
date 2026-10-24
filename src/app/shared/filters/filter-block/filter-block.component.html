@@ -1,0 +1,26 @@
+<div class="flex items-center justify-between">
+  <div class="flex items-center gap-4">
+    <app-filter-dropdown
+      class="relative"
+      [filters]="filters()"
+      [queryParamName]="filterParamName()"
+    />
+    <app-filter-input [searchParamKey]="searchParamName()" />
+  </div>
+  <div class="flex items-center gap-3">
+    <button
+      type="button"
+      class="p-2 border border-(--general-50) rounded cursor-pointer transition-opacity disabled:opacity-50"
+      [disabled]="disabledActions()"
+    >
+      <svg data-p-icon="pencil" id="pancil" class="size-5 text-(--primary-100)"></svg>
+    </button>
+    <button
+      type="button"
+      class="flex items-center justify-center size-10 border border-(--general-50) rounded cursor-pointer transition-opacity disabled:opacity-50"
+      [disabled]="disabledActions()"
+    >
+      <svg data-p-icon="trash" id="trash" class="size-5 text-(--primary-100)"></svg>
+    </button>
+  </div>
+</div>

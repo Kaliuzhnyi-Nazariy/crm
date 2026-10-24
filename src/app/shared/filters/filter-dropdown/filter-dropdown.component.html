@@ -1,0 +1,31 @@
+<button
+  type="button"
+  class="p-2 flex items-center justify-between gap-2 group border border-(--primary-40) rounded h-10 w-45 cursor-pointer outline-none relative"
+  (click)="isDropdownOpen.set(!isDropdownOpen())"
+>
+  <span class="ml-2 text-body-sm text-(--general-60) capitalize">
+    @if (chosenFilter()) {
+      {{ chosenFilter() }}
+    } @else {
+      Filter
+    }
+  </span>
+  <svg data-p-icon="angle-down" id="down" class="size-3 text-(--general-80)"></svg>
+</button>
+
+@if (isDropdownOpen()) {
+  <div
+    class="absolute w-45 max-h-50 min-h-0 top-full right-0 bg-(--general-40) z-30 overflow-hidden rounded-b-sm"
+  >
+    <ul class="overflow-y-auto text-body-xs">
+      @for (f of filters(); track $index) {
+        <li
+          class="capitalize p-2 cursor-pointer transition-colors hover:bg-(--general-60)"
+          (click)="clickHandle(f)"
+        >
+          {{ f }}
+        </li>
+      }
+    </ul>
+  </div>
+}

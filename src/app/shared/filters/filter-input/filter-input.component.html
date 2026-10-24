@@ -1,0 +1,15 @@
+<div
+  class="px-4 py-2 flex items-center gap-2 group border border-(--primary-40) rounded h-10 w-87.5 cursor-text"
+  (click)="searchInput.focus()"
+>
+  <svg data-p-icon="search" id="search" class="size-4 text-(--general-80)"></svg>
+
+  <input
+    #searchInput
+    [value]="input()"
+    (input)="onInputChange(searchInput.value)"
+    type="text"
+    class="outline-none border-none text-body-sm placeholder:text-(--general-60)"
+    placeholder="Search..."
+  />
+</div>
