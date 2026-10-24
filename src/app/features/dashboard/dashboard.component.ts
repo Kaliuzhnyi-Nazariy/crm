@@ -4,7 +4,7 @@ import { Cog } from '@primeicons/angular/cog';
 import { FirstLayoutComponent } from './ui/first-layout/first-layout.component';
 import { SecondLayout } from './ui/second-layout/second-layout';
 import { LayoutsSettingsModal } from './ui/layouts-settings-modal/layouts-settings-modal';
-import { LocalStorage } from '../../core/services/local-storage';
+import { LocalStorage } from '../../core/services/local-storage/local-storage';
 import { ThirdLayout } from './ui/third-layout/third-layout';
 import { ForthLayout } from './ui/forth-layout/forth-layout';
 

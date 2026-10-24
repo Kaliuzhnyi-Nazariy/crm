@@ -1,6 +1,6 @@
 import { Component, computed, effect, input, model, output } from '@angular/core';
 import { Modal } from '../../../../shared/components/modal/modal';
-import { LocalStorage } from '../../../../core/services/local-storage';
+import { LocalStorage } from '../../../../core/services/local-storage/local-storage';
 import { Layout } from './types';
 import { LayoutCardComponent } from './layout-card/layout-card.component';
 import { ButtonComponent } from '../../../../shared/components/modal/button/button.component';
