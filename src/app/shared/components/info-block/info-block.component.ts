@@ -6,7 +6,7 @@ import { Component, computed, input } from '@angular/core';
   styles: ``,
   templateUrl: './info-block.component.html',
   host: {
-    class: 'block h-full w-full',
+    class: 'flex flex-col h-full w-full',
   },
 })
 export class InfoBlockComponent {
