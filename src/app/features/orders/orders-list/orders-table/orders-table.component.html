@@ -1,4 +1,4 @@
-<div class="flex flex-col w-full flex-1 min-h-0 mt-5">
+<!-- <div class="flex flex-col w-full flex-1 min-h-0 mt-5">
   <table
     class="w-full border-collapse text-left text-body-xs leading-[1.358]! flex flex-col flex-1 min-h-0"
   >
@@ -44,4 +44,61 @@
       }
     </tbody>
   </table>
-</div>
+</div> -->
+
+<!-- <app-table
+  [orders]="computedOrders()"
+  [trackIdFn]="getOrderId"
+  [selectedOrders]="selectedOrders()"
+  [checkboxHandler]="checkboxHandler"
+  [headerCheckboxHandler]="headerCheckboxHandler"
+  [selectAllOrdersCheckbox]="selectAllOrdersCheckbox()"
+  class="flex flex-col w-full flex-1 min-h-0 overflow-y-auto scrollbar-track-transparent"
+>
+  <ng-template #header>
+    <th class="w-[12.5%] {{ headeeStyles }}">Order</th>
+    <th class="w-[12.5%] {{ headeeStyles }}">Date</th>
+    <th class="w-[17%] {{ headeeStyles }}">Customer</th>
+    <th class="w-[17%] {{ headeeStyles }}">Payment status</th>
+    <th class="w-[17%] {{ headeeStyles }}">Order Status</th>
+    <th class="w-[19%] pr-4 {{ headeeStyles }}">Total</th>
+  </ng-template>
+
+  <ng-template #row let-o>
+    <td class="w-[12.5%] py-4 font-bold">{{ o.order }}</td>
+    <td class="w-[12.5%] py-4">{{ o.date }}</td>
+    <td class="w-[17%] py-4">{{ o.customer }}</td>
+    <td class="w-[17%] py-4">{{ o.payment_status }}</td>
+    <td class="w-[17%] py-4">{{ o.order_status }}</td>
+    <td class="w-[19%] pr-4 py-4">{{ o.total }}</td>
+  </ng-template>
+</app-table> -->
+
+<app-table
+  [orders]="orders()"
+  [trackIdFn]="getOrderId"
+  [selectedOrders]="selectedOrders()"
+  [checkboxHandler]="checkboxHandler"
+  [headerCheckboxHandler]="headerCheckboxHandler()"
+  [selectAllOrdersCheckbox]="selectAllOrdersCheckbox()"
+  class="flex flex-col w-full flex-1 min-h-0"
+>
+  <!-- class="flex flex-col w-full flex-1 min-h-0 overflow-y-auto scrollbar-track-transparent" -->
+  <ng-template #header>
+    <th class="w-[12.5%]">Order</th>
+    <th class="w-[12.5%]">Date</th>
+    <th class="w-[17%]">Customer</th>
+    <th class="w-[17%]">Payment status</th>
+    <th class="w-[17%]">Order Status</th>
+    <th class="w-[19%] pr-4">Total</th>
+  </ng-template>
+
+  <ng-template #row let-o>
+    <td class="w-[12.5%] font-bold">{{ o.order }}</td>
+    <td class="w-[12.5%]">{{ o.date }}</td>
+    <td class="w-[17%]">{{ o.customer }}</td>
+    <td class="w-[17%] py-3.5!"><app-payment-status-marker [status]="o.payment_status" /></td>
+    <td class="w-[17%] py-3.5!"><app-order-status-marker [status]="o.order_status" /></td>
+    <td class="w-[19%] pr-4">${{ o.total }}</td>
+  </ng-template>
+</app-table>
