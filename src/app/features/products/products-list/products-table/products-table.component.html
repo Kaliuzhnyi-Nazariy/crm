@@ -1,0 +1,26 @@
+<app-table
+  [orders]="products()"
+  [trackIdFn]="getOrderId"
+  [selectedOrders]="selectedOrders()"
+  [checkboxHandler]="checkboxHandler"
+  [headerCheckboxHandler]="headerCheckboxHandler()"
+  [selectAllOrdersCheckbox]="selectAllOrdersCheckbox()"
+  class="flex flex-col w-full flex-1 min-h-0"
+>
+  <!-- class="flex flex-col w-full flex-1 min-h-0 overflow-y-auto scrollbar-track-transparent" -->
+  <ng-template #header>
+    <th>Product</th>
+    <th>Inventory</th>
+    <th>Color</th>
+    <th>Price</th>
+    <th>Rating</th>
+  </ng-template>
+
+  <ng-template #row let-i>
+    <td class="font-bold">{{ i.productName }}</td>
+    <td>{{ i.inventoryStatus }} in stock</td>
+    <td>{{ i.productColor }}</td>
+    <td>${{ i.productPrice }}</td>
+    <td class="pr-4">{{ i.averageRating }} ({{ i.totalVtes }} Votes)</td>
+  </ng-template>
+</app-table>
