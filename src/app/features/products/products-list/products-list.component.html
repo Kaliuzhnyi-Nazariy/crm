@@ -1,1 +1,52 @@
-<p>products-list works!</p>
+<app-content
+  title="Products"
+  [secondaryFunction]="exportButton"
+  [mainFunction]="addButton"
+  class="flex flex-col flex-1 min-h-0 w-full"
+  [scrollable]="false"
+>
+  <app-info-block
+    title="Products list"
+    [isHidden]="true"
+    [extraStylesForContent]="styles()"
+    class="flex flex-col flex-1 min-h-0 w-full h-full"
+  >
+    @if (products.length > 0) {
+      <app-filter-block
+        searchParamName="searchProduct"
+        filterParamName="productFilters"
+        [filters]="filters"
+        [deleteItem]="deleteOrder"
+        [editItem]="editOrder"
+        class="shrink-0 mb-4"
+        [disabledActions]="tableState.actionsDisabled()"
+      />
+
+      <app-products-table
+        [products]="tableState.items()"
+        [selectedOrders]="tableState.selectedIds()"
+        [checkboxHandler]="tableState.toggleItem.bind(tableState)"
+        [headerCheckboxHandler]="tableState.toggleAll.bind(tableState)"
+        [selectAllOrdersCheckbox]="tableState.isAllSelected()"
+        class="flex flex-col w-full flex-1 min-h-0"
+      />
+
+      <app-pagination
+        [allProductsLength]="products.length"
+        [productsPerPage]="paginator.perPage()"
+        [(currentPage)]="paginator.page"
+        class="shrink-0 mt-auto pt-4"
+      >
+      </app-pagination>
+    } @else {
+      <app-empty-list
+        [addButton]="addButton"
+        title="Add Products"
+        text="Start making sales by adding your products.
+You can import and manage your products at any time."
+        class="flex flex-col items-center"
+        iconURL="/icons/illustration.svg"
+      />
+    }
+  </app-info-block>
+</app-content>
