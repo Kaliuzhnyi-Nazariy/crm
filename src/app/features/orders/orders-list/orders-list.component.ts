@@ -2,19 +2,19 @@ import { Component, computed, effect, inject, OnInit, signal } from '@angular/co
 import { ContentComponent } from '../../../core/layout/content/content.component';
 import { Plus } from '@primeicons/angular/plus';
 import { InfoBlockComponent } from '../../../shared/components/info-block/info-block.component';
-import { EmptyListComponent } from './empty-list/empty-list.component';
 import { Order } from '../types';
 import { PaginationComponent } from '../../../shared/components/pagination/pagination.component';
 import { Paginator } from '../../../core/services/paginator/paginator';
 import { FilterBlockComponent } from '../../../shared/filters/filter-block/filter-block.component';
 import { Router } from '@angular/router';
 import { OrdersTableComponent } from './orders-table/orders-table.component';
+import { EmptyOrdersListComponent } from './empty-orders-list/empty-orders-list.component';
 
 @Component({
   imports: [
     ContentComponent,
     InfoBlockComponent,
-    EmptyListComponent,
+    EmptyOrdersListComponent,
     PaginationComponent,
     FilterBlockComponent,
     OrdersTableComponent,
