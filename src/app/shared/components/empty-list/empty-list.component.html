@@ -1,0 +1,8 @@
+<img [src]="iconURL()" class="size-35" />
+<h3 class="text-h6 capitalize mt-6">{{ title() }}</h3>
+<p class="text-body-sm text-(--general-80) w-3/5 text-center mt-3">
+  {{ text() }}
+</p>
+
+<app-button [settedFunction]="addButton()" class="mt-6" />
+<app-button [settedFunction]="read" btnType="secondary" [hasBorder]="false" class="mt-3" />
