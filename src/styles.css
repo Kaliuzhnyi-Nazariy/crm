@@ -148,7 +148,16 @@
   letter-spacing: 2px;
 }
 
-main > app-orders-list {
+/* main > app-orders-list {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 !important;
+  min-height: 0 !important;
+  width: 100% !important;
+} */
+
+main > .list {
+  height: 100dvh;
   display: flex !important;
   flex-direction: column !important;
   flex: 1 !important;
