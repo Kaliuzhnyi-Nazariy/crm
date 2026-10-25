@@ -9,7 +9,7 @@ import { EmptyListComponent } from '../../../../shared/components/empty-list/emp
   templateUrl: './empty-orders-list.component.html',
 })
 export class EmptyOrdersListComponent {
-  addOrder = input<Button>();
+  addOrder = input.required<Button>();
 
   read = {
     name: 'Read more',
