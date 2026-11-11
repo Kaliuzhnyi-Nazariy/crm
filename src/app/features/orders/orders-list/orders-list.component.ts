@@ -9,6 +9,7 @@ import { FilterBlockComponent } from '../../../shared/filters/filter-block/filte
 import { Router } from '@angular/router';
 import { OrdersTableComponent } from './orders-table/orders-table.component';
 import { EmptyOrdersListComponent } from './empty-orders-list/empty-orders-list.component';
+import { TableOperationsService } from '../../../core/services/table-operations/table-operations';
 
 @Component({
   imports: [
@@ -20,6 +21,7 @@ import { EmptyOrdersListComponent } from './empty-orders-list/empty-orders-list.
     OrdersTableComponent,
   ],
   selector: 'app-orders-list',
+  providers: [TableOperationsService],
   styles: ``,
   host: { class: 'list' },
   styleUrl: '../../../../styles.css',
@@ -27,104 +29,203 @@ import { EmptyOrdersListComponent } from './empty-orders-list/empty-orders-list.
 })
 export class OrdersListComponent {
   protected paginator = inject(Paginator);
+  protected tableState = inject(TableOperationsService);
 
+  // orders: Order[] = [
+  //   {
+  //     order: '#12512B',
+  //     date: 'May 5, 4:20 PM',
+  //     customer: 'Tom Anderson',
+  //     payment_status: 'Paid',
+  //     order_status: 'Ready',
+  //     total: 49.9,
+  //   },
+  //   {
+  //     order: '#12523C',
+  //     date: 'May 5, 4:15 PM',
+  //     customer: 'Jayden Walker',
+  //     payment_status: 'Paid',
+  //     order_status: 'Ready',
+  //     total: 34.36,
+  //   },
+  //   {
+  //     order: '#51232A',
+  //     date: 'May 5, 4:15 PM',
+  //     customer: 'Inez Kim',
+  //     payment_status: 'Paid',
+  //     order_status: 'Ready',
+  //     total: 5.51,
+  //   },
+  //   {
+  //     order: '#23534D',
+  //     date: 'May 5, 4:12 PM',
+  //     customer: 'Francisco Henry',
+  //     payment_status: 'Pending',
+  //     order_status: 'Shipped',
+  //     total: 29.74,
+  //   },
+  //   {
+  //     order: '#51323C',
+  //     date: 'May 5, 4:12 PM',
+  //     customer: 'Violet Phillips',
+  //     payment_status: 'Paid',
+  //     order_status: 'Shipped',
+  //     total: 23.06,
+  //   },
+  //   {
+  //     order: '#35622A',
+  //     date: 'May 5, 4:12 PM',
+  //     customer: 'Rosetta Becker',
+  //     payment_status: 'Paid',
+  //     order_status: 'Shipped',
+  //     total: 87.44,
+  //   },
+  //   {
+  //     order: '#34232D',
+  //     date: 'May 5, 4:10 PM',
+  //     customer: 'Dean Love',
+  //     payment_status: 'Paid',
+  //     order_status: 'Ready',
+  //     total: 44.55,
+  //   },
+  //   {
+  //     order: '#56212D',
+  //     date: 'May 5, 4:08 PM',
+  //     customer: 'Nettie Tyler',
+  //     payment_status: 'Pending',
+  //     order_status: 'Ready',
+  //     total: 36.79,
+  //   },
+  //   {
+  //     order: '#76543E',
+  //     date: 'May 5, 4:08 PM',
+  //     customer: 'Lora Weaver',
+  //     payment_status: 'Paid',
+  //     order_status: 'Received',
+  //     total: 28.78,
+  //   },
+  //   {
+  //     order: '#12512L',
+  //     date: 'May 5, 4:05 PM',
+  //     customer: 'Vincent Cannon',
+  //     payment_status: 'Paid',
+  //     order_status: 'Shipped',
+  //     total: 96.46,
+  //   },
+  //   {
+  //     order: '#76543P',
+  //     date: 'May 5, 4:08 PM',
+  //     customer: 'Lora Weaver',
+  //     payment_status: 'Paid',
+  //     order_status: 'Received',
+  //     total: 28.78,
+  //   },
+  //   {
+  //     order: '#12512Q',
+  //     date: 'May 5, 4:05 PM',
+  //     customer: 'Vincent Cannon',
+  //     payment_status: 'Pending',
+  //     order_status: 'Shipped',
+  //     total: 96.46,
+  //   },
+  // ];
   orders: Order[] = [
-    // {
-    //   order: '#12512B',
-    //   date: 'May 5, 4:20 PM',
-    //   customer: 'Tom Anderson',
-    //   payment_status: 'Paid',
-    //   order_status: 'Ready',
-    //   total: 49.9,
-    // },
-    // {
-    //   order: '#12523C',
-    //   date: 'May 5, 4:15 PM',
-    //   customer: 'Jayden Walker',
-    //   payment_status: 'Paid',
-    //   order_status: 'Ready',
-    //   total: 34.36,
-    // },
-    // {
-    //   order: '#51232A',
-    //   date: 'May 5, 4:15 PM',
-    //   customer: 'Inez Kim',
-    //   payment_status: 'Paid',
-    //   order_status: 'Ready',
-    //   total: 5.51,
-    // },
-    // {
-    //   order: '#23534D',
-    //   date: 'May 5, 4:12 PM',
-    //   customer: 'Francisco Henry',
-    //   payment_status: 'Pending',
-    //   order_status: 'Shipped',
-    //   total: 29.74,
-    // },
-    // {
-    //   order: '#51323C',
-    //   date: 'May 5, 4:12 PM',
-    //   customer: 'Violet Phillips',
-    //   payment_status: 'Paid',
-    //   order_status: 'Shipped',
-    //   total: 23.06,
-    // },
-    // {
-    //   order: '#35622A',
-    //   date: 'May 5, 4:12 PM',
-    //   customer: 'Rosetta Becker',
-    //   payment_status: 'Paid',
-    //   order_status: 'Shipped',
-    //   total: 87.44,
-    // },
-    // {
-    //   order: '#34232D',
-    //   date: 'May 5, 4:10 PM',
-    //   customer: 'Dean Love',
-    //   payment_status: 'Paid',
-    //   order_status: 'Ready',
-    //   total: 44.55,
-    // },
-    // {
-    //   order: '#56212D',
-    //   date: 'May 5, 4:08 PM',
-    //   customer: 'Nettie Tyler',
-    //   payment_status: 'Pending',
-    //   order_status: 'Ready',
-    //   total: 36.79,
-    // },
-    // {
-    //   order: '#76543E',
-    //   date: 'May 5, 4:08 PM',
-    //   customer: 'Lora Weaver',
-    //   payment_status: 'Paid',
-    //   order_status: 'Received',
-    //   total: 28.78,
-    // },
-    // {
-    //   order: '#12512L',
-    //   date: 'May 5, 4:05 PM',
-    //   customer: 'Vincent Cannon',
-    //   payment_status: 'Paid',
-    //   order_status: 'Shipped',
-    //   total: 96.46,
-    // },
-    // {
-    //   order: '#76543P',
-    //   date: 'May 5, 4:08 PM',
-    //   customer: 'Lora Weaver',
-    //   payment_status: 'Paid',
-    //   order_status: 'Received',
-    //   total: 28.78,
-    // },
-    // {
-    //   order: '#12512Q',
-    //   date: 'May 5, 4:05 PM',
-    //   customer: 'Vincent Cannon',
-    //   payment_status: 'Pending',
-    //   order_status: 'Shipped',
-    //   total: 96.46,
-    // },
+    {
+      id: '#12512B',
+      date: 'May 5, 4:20 PM',
+      customer: 'Tom Anderson',
+      payment_status: 'Paid',
+      order_status: 'Ready',
+      total: 49.9,
+    },
+    {
+      id: '#12523C',
+      date: 'May 5, 4:15 PM',
+      customer: 'Jayden Walker',
+      payment_status: 'Paid',
+      order_status: 'Ready',
+      total: 34.36,
+    },
+    {
+      id: '#51232A',
+      date: 'May 5, 4:15 PM',
+      customer: 'Inez Kim',
+      payment_status: 'Paid',
+      order_status: 'Ready',
+      total: 5.51,
+    },
+    {
+      id: '#23534D',
+      date: 'May 5, 4:12 PM',
+      customer: 'Francisco Henry',
+      payment_status: 'Pending',
+      order_status: 'Shipped',
+      total: 29.74,
+    },
+    {
+      id: '#51323C',
+      date: 'May 5, 4:12 PM',
+      customer: 'Violet Phillips',
+      payment_status: 'Paid',
+      order_status: 'Shipped',
+      total: 23.06,
+    },
+    {
+      id: '#35622A',
+      date: 'May 5, 4:12 PM',
+      customer: 'Rosetta Becker',
+      payment_status: 'Paid',
+      order_status: 'Shipped',
+      total: 87.44,
+    },
+    {
+      id: '#34232D',
+      date: 'May 5, 4:10 PM',
+      customer: 'Dean Love',
+      payment_status: 'Paid',
+      order_status: 'Ready',
+      total: 44.55,
+    },
+    {
+      id: '#56212D',
+      date: 'May 5, 4:08 PM',
+      customer: 'Nettie Tyler',
+      payment_status: 'Pending',
+      order_status: 'Ready',
+      total: 36.79,
+    },
+    {
+      id: '#76543E',
+      date: 'May 5, 4:08 PM',
+      customer: 'Lora Weaver',
+      payment_status: 'Paid',
+      order_status: 'Received',
+      total: 28.78,
+    },
+    {
+      id: '#12512L',
+      date: 'May 5, 4:05 PM',
+      customer: 'Vincent Cannon',
+      payment_status: 'Paid',
+      order_status: 'Shipped',
+      total: 96.46,
+    },
+    {
+      id: '#76543P',
+      date: 'May 5, 4:08 PM',
+      customer: 'Lora Weaver',
+      payment_status: 'Paid',
+      order_status: 'Received',
+      total: 28.78,
+    },
+    {
+      id: '#12512Q',
+      date: 'May 5, 4:05 PM',
+      customer: 'Vincent Cannon',
+      payment_status: 'Pending',
+      order_status: 'Shipped',
+      total: 96.46,
+    },
   ];
 
   selectedOrders = signal<string[]>([]);
@@ -137,53 +238,58 @@ export class OrdersListComponent {
     );
   });
 
-  selectAllOrdersCheckbox = computed(() => {
-    const currentOrders = this.computedOrders();
+  // selectAllOrdersCheckbox = computed(() => {
+  //   const currentOrders = this.computedOrders();
 
-    if (currentOrders.length === 0) return false;
+  //   if (currentOrders.length === 0) return false;
 
-    const currentSelected = this.selectedOrders();
+  //   const currentSelected = this.selectedOrders();
 
-    return currentOrders.every((o) => currentSelected.includes(o.order));
-  });
+  //   return currentOrders.every((o) => currentSelected.includes(o.order));
+  // });
 
-  headerCheckboxHandler = () => {
-    const currentOrders = this.computedOrders();
-    const currentSelected = this.selectedOrders();
+  // headerCheckboxHandler = () => {
+  //   const currentOrders = this.computedOrders();
+  //   const currentSelected = this.selectedOrders();
 
-    const allSelected = currentOrders.every((o) => currentSelected.includes(o.order));
+  //   const allSelected = currentOrders.every((o) => currentSelected.includes(o.order));
 
-    if (allSelected) {
-      const currentOrderIds = currentOrders.map((o) => o.order);
-      this.selectedOrders.set(currentSelected.filter((id) => !currentOrderIds.includes(id)));
-    } else {
-      const newSelections = currentOrders.map((o) => o.order);
-      const uniqueSelections = Array.from(new Set([...currentSelected, ...newSelections]));
-      this.selectedOrders.set(uniqueSelections);
-      // this.selectAllOrdersCheckbox.set(true);
-    }
-  };
+  //   if (allSelected) {
+  //     const currentOrderIds = currentOrders.map((o) => o.order);
+  //     this.selectedOrders.set(currentSelected.filter((id) => !currentOrderIds.includes(id)));
+  //   } else {
+  //     const newSelections = currentOrders.map((o) => o.order);
+  //     const uniqueSelections = Array.from(new Set([...currentSelected, ...newSelections]));
+  //     this.selectedOrders.set(uniqueSelections);
+  //     // this.selectAllOrdersCheckbox.set(true);
+  //   }
+  // };
 
-  checkboxHandler = (orderId: string) => {
-    this.selectedOrders.update((current) => {
-      if (current.includes(orderId)) {
-        // this.selectAllOrdersCheckbox.set(false);
+  // checkboxHandler = (orderId: string) => {
+  //   this.selectedOrders.update((current) => {
+  //     if (current.includes(orderId)) {
+  //       // this.selectAllOrdersCheckbox.set(false);
 
-        return current.filter((id) => id !== orderId);
-      } else {
-        console.log(orderId);
-        console.log([...current, orderId]);
-        console.log(this.computedOrders().length);
-        console.log([...current, orderId].length === this.computedOrders().length);
-        if ([...current, orderId].length === this.computedOrders().length) {
-          // this.selectAllOrdersCheckbox.set(true);
-        }
-        return [...current, orderId];
-      }
+  //       return current.filter((id) => id !== orderId);
+  //     } else {
+  //       console.log(orderId);
+  //       console.log([...current, orderId]);
+  //       console.log(this.computedOrders().length);
+  //       console.log([...current, orderId].length === this.computedOrders().length);
+  //       if ([...current, orderId].length === this.computedOrders().length) {
+  //         // this.selectAllOrdersCheckbox.set(true);
+  //       }
+  //       return [...current, orderId];
+  //     }
+  //   });
+  // };
+
+  constructor(private router: Router) {
+    effect(() => {
+      this.tableState.setData(this.computedOrders());
+      console.log('selected: ', this.tableState.selectedIds());
     });
-  };
-
-  constructor(private router: Router) {}
+  }
 
   addOrder = {
     name: 'Add order',
