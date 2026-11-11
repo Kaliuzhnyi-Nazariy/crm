@@ -1,0 +1,23 @@
+<label [for]="label()" class="text-(--general-80) text-body-xs">{{ label() }}</label>
+<!-- class="px-4 py-2 border border-(--general-50) w-full mt-1 text-body-sm transition-all relative" -->
+<div [id]="label()" class="relative">
+  <!-- [class]="styles()" -->
+  <div
+    class="px-4 py-2 border border-(--general-50) w-full mt-1 text-body-sm transition-all flex items-center justify-between"
+    [class]="mainInputFieldStyles()"
+    (click)="toggleMenu()"
+  >
+    <span>{{ placeholderValue() }}</span>
+    <span [class]="arrowView()"><svg data-p-icon="angle-down"></svg></span>
+  </div>
+  <div
+    class="absolute w-full h-50 bg-white rounded-b-sm border border-t-transparent border-(--general-50) top-full left-0 transition-all origin-top overflow-hidden pb-2"
+    [class]="menuDisplay()"
+  >
+    <ul class="h-full overflow-y-auto">
+      @for (country of countries; track $index) {
+        <li class="px-4 py-1" (click)="handleChangeCountry(country)">{{ country }}</li>
+      }
+    </ul>
+  </div>
+</div>
