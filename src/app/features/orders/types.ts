@@ -1,5 +1,6 @@
 export type Order = {
-  order: string;
+  id: string;
+  // order: string;
   date: string;
   customer: string;
   payment_status: 'Paid' | 'Pending';
