@@ -1,26 +1,61 @@
-<app-table
-  [orders]="products()"
-  [trackIdFn]="getOrderId"
+<!-- <app-table
+  [items]="products()"
+  [trackIdFn]="trackByProductId"
   [selectedOrders]="selectedOrders()"
   [checkboxHandler]="checkboxHandler"
-  [headerCheckboxHandler]="headerCheckboxHandler()"
   [selectAllOrdersCheckbox]="selectAllOrdersCheckbox()"
   class="flex flex-col w-full flex-1 min-h-0"
+  specialStylesBodyRow="h-18! items-stretch justify-center"
+  > -->
+<!-- <app-table
+  [items]="products()"
+  [trackIdFn]="trackByProductId"
+  [checkboxHandler]="checkboxHandler"
+  [headerCheckboxHandler]="headerCheckboxHandler"
+  class="flex flex-col w-full flex-1 min-h-0"
+  specialStylesBodyRow="h-18! items-stretch justify-center"
+> -->
+<button tape="button">click</button>
+<app-table
+  [items]="products()"
+  [trackIdFn]="trackByProductId"
+  [checkboxHandler]="checkboxHandler()"
+  [headerCheckboxHandler]="headerCheckboxHandler()"
+  [selectedItems]="selectedProducts()"
+  [selectedAllItemsCheckbox]="isAllItemsSelected()"
+  class="flex flex-col w-full flex-1 min-h-0"
+  specialStylesBodyRow="h-18! items-stretch justify-center"
 >
+  <!--
+  [headerCheckboxHandler]="headerCheckboxHandler()"
+  [selectedItems]="selectedProducts()"
+  [selectAllItemsCheckbox]="selectAllProductssCheckbox()" -->
   <!-- class="flex flex-col w-full flex-1 min-h-0 overflow-y-auto scrollbar-track-transparent" -->
   <ng-template #header>
-    <th>Product</th>
-    <th>Inventory</th>
-    <th>Color</th>
-    <th>Price</th>
-    <th>Rating</th>
+    <th class="w-[45%]">Product</th>
+    <th class="w-[15%]">Inventory</th>
+    <th class="w-[10%]">Color</th>
+    <th class="w-1/10">Price</th>
+    <th class="w-[15%]">Rating</th>
   </ng-template>
 
   <ng-template #row let-i>
-    <td class="font-bold">{{ i.productName }}</td>
-    <td>{{ i.inventoryStatus }} in stock</td>
-    <td>{{ i.productColor }}</td>
-    <td>${{ i.productPrice }}</td>
-    <td class="pr-4">{{ i.averageRating }} ({{ i.totalVtes }} Votes)</td>
+    <td class="w-[45%] py-3!">
+      <div class="flex gap-4 items-center">
+        <div class="size-12 bg-(--primary-50) rounded"></div>
+        <div class="">
+          <h4 style="font: var(--font-caption-1)">{{ i.productName }}</h4>
+          <p class="text-(--general-80)">{{ i.categoryName }}</p>
+        </div>
+      </div>
+    </td>
+    <td class="w-[15%] py-3! flex items-center">
+      <app-inventory-marker [amount]="i.inventoryStatus" />
+    </td>
+    <td class="w-[10%] py-3! flex items-center">{{ i.productColor }}</td>
+    <td class="w-1/10 py-3! flex items-center">${{ i.productPrice }}</td>
+    <td class="pr-4 w-[15%] py-3! flex items-center">
+      {{ i.averageRating }} ({{ i.totalVotes }} Votes)
+    </td>
   </ng-template>
 </app-table>

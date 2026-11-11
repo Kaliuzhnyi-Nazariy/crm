@@ -22,12 +22,18 @@
         [disabledActions]="tableState.actionsDisabled()"
       />
 
-      <app-products-table
+      <!-- <app-products-table
         [products]="tableState.items()"
-        [selectedOrders]="tableState.selectedIds()"
+        class="flex flex-col w-full flex-1 min-h-0"
+        /> -->
+
+      <!-- [headerCheckboxHandler]="tableState.toggleAll.bind(tableState)" -->
+      <app-products-table
+        [products]="computedProducts()"
         [checkboxHandler]="tableState.toggleItem.bind(tableState)"
         [headerCheckboxHandler]="tableState.toggleAll.bind(tableState)"
-        [selectAllOrdersCheckbox]="tableState.isAllSelected()"
+        [isAllItemsSelected]="tableState.isAllSelected()"
+        [selectedProducts]="tableState.selectedIds()"
         class="flex flex-col w-full flex-1 min-h-0"
       />
 

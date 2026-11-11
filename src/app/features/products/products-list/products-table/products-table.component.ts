@@ -1,5 +1,6 @@
-import { Component, input } from '@angular/core';
+import { Component, effect, input } from '@angular/core';
 import { TableComponent } from '../../../../shared/components/table/table.component';
+import { InventoryMarkerComponent } from './inventory-marker/inventory-marker.component';
 
 type Product = {
   id: string;
@@ -13,7 +14,7 @@ type Product = {
 };
 
 @Component({
-  imports: [TableComponent],
+  imports: [TableComponent, InventoryMarkerComponent],
   selector: 'app-products-table',
   styles: ``,
   templateUrl: './products-table.component.html',
@@ -23,8 +24,14 @@ export class ProductsTableComponent {
 
   checkboxHandler = input.required<(id: string) => void>();
   headerCheckboxHandler = input.required<() => void>();
-  selectedOrders = input<string[]>([]);
-  selectAllOrdersCheckbox = input<boolean>(false);
+  selectedProducts = input<string[]>([]);
+  isAllItemsSelected = input<boolean>(false);
 
-  getOrderId = (item: Product) => item.id;
+  constructor() {
+    effect(() => {
+      console.log('table', this.isAllItemsSelected());
+    });
+  }
+
+  trackByProductId = (product: Product) => product.id;
 }
