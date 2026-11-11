@@ -69,7 +69,7 @@ export interface Identifiable {
 @Injectable()
 export class TableOperationsService<T extends Identifiable> {
   readonly items = signal<T[]>([]);
-  readonly selectedIds = signal<string[]>([]);
+  selectedIds = signal<string[]>([]);
 
   readonly hasSelections = computed(() => this.selectedIds().length > 0);
   readonly actionsDisabled = computed(() => !this.hasSelections());
@@ -85,12 +85,16 @@ export class TableOperationsService<T extends Identifiable> {
   setData(newItems: T[]): void {
     this.items.set(newItems);
 
-    const newItemIds = newItems.map((i) => i.id);
-    this.selectedIds.update((current) => current.filter((id) => newItemIds.includes(id)));
+    // const newItemIds = newItems.map((i) => i.id);
+    // this.selectedIds.update((current) => current.filter((id) => newItemIds.includes(id)));
   }
 
   toggleAll(): void {
     const currentItems = this.items();
+
+    // console.log({ currentItems });
+
+    // console.log('isAllSelected:', this.isAllSelected());
 
     if (this.isAllSelected()) {
       const currentItemIds = currentItems.map((i) => i.id);
@@ -100,12 +104,11 @@ export class TableOperationsService<T extends Identifiable> {
       this.selectedIds.update((current) => Array.from(new Set([...current, ...allIds])));
     }
   }
-
-  toggleItem(id: string): void {
+  toggleItem = (id: string): void => {
     this.selectedIds.update((current) =>
       current.includes(id) ? current.filter((item) => item !== id) : [...current, id],
     );
-  }
+  };
 
   clearSelections(): void {
     this.selectedIds.set([]);
