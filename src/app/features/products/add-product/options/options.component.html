@@ -1,0 +1,66 @@
+<div class="mt-6 flex flex-col gap-6">
+  <h4 class="text-block-header">Different Options</h4>
+  <app-toggler
+    label="This product has multiple options"
+    [(status)]="isMultipleOptions"
+  ></app-toggler>
+  @if (isMultipleOptions()) {
+    <div class="flex flex-col gap-5" [class]="listStyles()">
+      @for (option of options(); track $index; let optionIndex = $index) {
+        <h5 class="text-block-header">Option {{ $index + 1 }}</h5>
+        <div class="grid grid-cols-2 gap-7">
+          <app-input label="Option Value" [(value)]="option.key"></app-input>
+          <form (submit)="$event.preventDefault(); addValue(optionIndex, valInput)">
+            <div class="block w-full h-full">
+              <label for="valInput" class="text-(--general-80) text-body-xs">Value</label>
+              <div
+                (click)="valInput.focus()"
+                class="px-4 py-2 border border-(--general-50) rounded mt-1 flex items-center gap-2 flex-nowrap"
+              >
+                @if (option.values.length > 0) {
+                  <div class="overflow-x-hidden max-w-5/10">
+                    <ul
+                      #scrollContainer
+                      (mousedown)="startDragging($event, scrollContainer)"
+                      (mouseleave)="stopDragging()"
+                      (mouseup)="stopDragging()"
+                      (mousemove)="moveEvent($event, scrollContainer)"
+                      class="flex gap-2 overflow-x-auto scrollbar-none cursor-grab active:cursor-grabbing"
+                    >
+                      @for (v of option.values; track vIdx; let vIdx = $index) {
+                        <li
+                          class="blockedText flex items-center gap-1 pl-3 pr-1 bg-(--general-50) rounded"
+                          #option
+                        >
+                          <p class="text-body-xs text-(--general-80)">{{ v }}</p>
+                          <button
+                            type="button"
+                            class="size-6 flex items-center justify-center text-(--general-70) cursor-pointer"
+                            (click)="$event.stopPropagation(); removeValue(optionIndex, vIdx)"
+                          >
+                            <svg data-p-icon="times" class="size-5"></svg>
+                          </button>
+                        </li>
+                      }
+                    </ul>
+                  </div>
+                }
+                <input
+                  #valInput
+                  id="valInput"
+                  placeholder="Enter value"
+                  class="min-w-6/10 h-full text-body-sm transition-all outline-none"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+      }
+      <button type="button" (click)="addOption()" class="inline-block w-fit text-(--primary-100)">
+        add option
+      </button>
+    </div>
+  } @else {
+    <p>No different options</p>
+  }
+</div>

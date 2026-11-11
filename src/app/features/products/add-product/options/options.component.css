@@ -1,0 +1,5 @@
+.blockedText {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* Starsze wersje IE / Edge */
+  user-select: none; /* Standard (Chrome, Firefox, Opera) */
+}
