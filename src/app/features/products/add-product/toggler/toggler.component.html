@@ -1,0 +1,10 @@
+<div class="flex gap-3 items-center">
+  <div
+    class="h-6 w-11 bg-(--primary-40) rounded-full p-1"
+    [class]="bg(status())()"
+    (click)="toggle()"
+  >
+    <div class="size-4 rounded-full bg-white transition-all" [class]="position(status())()"></div>
+  </div>
+  <p>{{ label() }}</p>
+</div>
