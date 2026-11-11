@@ -1,0 +1,30 @@
+<div class="mt-6 flex flex-col gap-5">
+  <!-- Przechwytujemy standardowy submit formularza -->
+  <form (submit)="$event.preventDefault(); handleSubmit()">
+    <!-- Używamy nowego, dwukierunkowego bindowania sygnału -->
+    <app-input
+      [(value)]="currentInputValue"
+      label="Add tags"
+      placeholder="Enter tag name"
+    ></app-input>
+  </form>
+
+  @if (tags().length > 0) {
+    <ul class="flex flex-wrap gap-2">
+      @for (tag of tags(); track tag) {
+        <li class="flex items-center gap-1 pl-3 pr-1 bg-(--general-50) rounded">
+          <!-- <p>{{ tag }}</p>
+          <svg data-p-icon="times" class="cursor-pointer text-sm" (click)="removeTag(tag)"></svg> -->
+          <p class="text-body-xs text-(--general-80)">{{ tag }}</p>
+          <button
+            type="button"
+            class="size-6 flex items-center justify-center text-(--general-70) cursor-pointer"
+            (click)="$event.stopPropagation(); removeTag(tag)"
+          >
+            <svg data-p-icon="times" class="size-5"></svg>
+          </button>
+        </li>
+      }
+    </ul>
+  }
+</div>
