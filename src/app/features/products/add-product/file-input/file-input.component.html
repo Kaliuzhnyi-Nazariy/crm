@@ -1,0 +1,21 @@
+<label
+  for="file-input"
+  class="mt-6 border border-dashed border-(--general-60) rounded w-full! py-12 flex flex-col items-center justify-center gap-3"
+  (dragover)="$event.preventDefault(); onDragOver($event)"
+  (dragleave)="onDragLeave()"
+  (drop)="$event.preventDefault(); onDrop($event)"
+>
+  <!-- <button type="button">Add File</button> -->
+  <app-button btnType="secondary" [settedFunction]="addFileButton"></app-button>
+  <small>Or drag and drop files</small>
+</label>
+<input
+  #fileInput
+  type="file"
+  hidden
+  id="file-input"
+  style="display: none"
+  (change)="onFileSelected($event)"
+  accept="image/*"
+  multiple
+/>
