@@ -1,0 +1,19 @@
+<div class="mt-6 flex flex-col gap-6">
+  <h4 class="text-block-header">Shipping</h4>
+  <div class="grid grid-cols-2 gap-7">
+    <app-input
+      label="Weight"
+      placeholder="Enter Weight"
+      [disabled]="status()"
+      [(value)]="weight"
+    ></app-input>
+
+    <app-countries-dropdown
+      label="Country"
+      placeholder="Select Country"
+      [disabled]="status()"
+      [(selectedCountry)]="country"
+    ></app-countries-dropdown>
+  </div>
+  <app-toggler label="This is digital item" [(status)]="status"></app-toggler>
+</div>
