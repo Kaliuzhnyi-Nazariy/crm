@@ -1,0 +1,7 @@
+@if (amount() > 0) {
+  <p>{{ amount() }} in stock</p>
+} @else {
+  <span class="w-fit px-2 py-0.5 rounded bg-(--general-40) text-(--general-80)">
+    Out of Stock
+  </span>
+}
