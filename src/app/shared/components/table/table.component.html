@@ -145,10 +145,12 @@
   </table>
 </div> -->
 
+<!-- // -->
+
+<!-- <table
+  class="w-full border-collapse text-left text-body-xs leading-[1.358]! flex flex-col flex-1 min-h-0"
+> -->
 <div class="flex flex-col w-full flex-1 min-h-0 mt-5">
-  <!-- <table
-    class="w-full border-collapse text-left text-body-xs leading-[1.358]! flex flex-col flex-1 min-h-0"
-  > -->
   <table
     class="w-full border-collapse text-left text-body-xs leading-[1.358]! flex flex-col flex-1 min-h-0"
   >
@@ -159,10 +161,10 @@
             type="checkbox"
             class="rounded border-gray-300 cursor-pointer size-5 mx-auto"
             (change)="headerCheckboxHandler()()"
-            [checked]="selectAllOrdersCheckbox()"
+            [checked]="selectedAllItemsCheckbox()"
           />
         </th>
-        <!-- Dynamiczne nagłówki kolumn wstrzyknięte z zewnątrz -->
+
         @if (headerTemplate()) {
           <ng-container [ngTemplateOutlet]="headerTemplate()!" />
         }
@@ -172,22 +174,20 @@
     <tbody
       class="text-(--general-100) font-light w-full flex flex-col flex-1 min-h-0 overflow-y-auto scroll"
     >
-      @for (o of orders(); track trackIdFn()(o)) {
-        <tr class="w-full flex items-center shrink-0">
-          <!-- Komórka z checkboxem wiersza dziedziczy style td automatycznie -->
+      @for (i of items(); track trackIdFn()(i)) {
+        <tr class="w-full flex items-center shrink-0" [class]="specialStylesBodyRow()">
           <td class="w-[5%] flex items-center justify-start">
             <input
               type="checkbox"
               class="rounded border-gray-300 cursor-pointer size-5 mx-auto"
-              [checked]="isChecked(o)"
-              (change)="checkboxHandler()(trackIdFn()(o))"
+              [checked]="isChecked(i)"
+              (change)="checkboxHandler()(trackIdFn()(i))"
             />
           </td>
-          <!-- Dynamiczny wiersz wstrzyknięty z zewnątrz -->
           @if (rowTemplate()) {
             <ng-container
               [ngTemplateOutlet]="rowTemplate()!"
-              [ngTemplateOutletContext]="{ $implicit: o }"
+              [ngTemplateOutletContext]="{ $implicit: i }"
             />
           }
         </tr>
