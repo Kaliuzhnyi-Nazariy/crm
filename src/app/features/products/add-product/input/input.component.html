@@ -1,0 +1,24 @@
+@if (label()) {
+  <label [for]="label()" class="text-(--general-80) text-body-xs">{{ label() }}</label>
+}
+@if (!textarea()) {
+  <input
+    [id]="label()"
+    [(ngModel)]="value"
+    class="px-4 py-2 border border-(--general-50) rounded w-full mt-1 text-body-sm transition-all"
+    [placeholder]="placeholderValue()"
+    [class]="styles()"
+    [disabled]="disabled()"
+    [type]="type()"
+  />
+} @else {
+  <textarea
+    [id]="label()"
+    [(ngModel)]="value"
+    [placeholder]="placeholderValue()"
+    class="px-4 py-2 border border-(--general-50) rounded w-full mt-1 text-body-sm resize-none"
+    rows="3"
+    [class]="styles()"
+    [disabled]="disabled()"
+  ></textarea>
+}
