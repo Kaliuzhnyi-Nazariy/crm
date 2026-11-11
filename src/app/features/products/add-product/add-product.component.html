@@ -1,1 +1,52 @@
-<p>add-product works!</p>
+<app-content
+  title="Add Product"
+  [secondaryFunction]="cancelButton"
+  [mainFunction]="saveButton"
+  [scrollable]="true"
+  class="flex flex-col h-full w-full flex-1 min-h-0"
+>
+  <div class="grid grid-cols-[2fr_1fr] grid-rows-auto gap-7 items-start">
+    <app-info-block title="new product data" [isHidden]="true">
+      <app-product-information
+        [(productName)]="name"
+        [(productDescription)]="description"
+      ></app-product-information>
+      <div class="h-px w-full mt-9 bg-(--general-60)"></div>
+      <div class="mt-6">
+        <h4 class="text-block-header">Images</h4>
+        <app-file-input [(images)]="images"></app-file-input>
+      </div>
+
+      <div class="h-px w-full mt-9 bg-(--general-60)"></div>
+
+      <app-product-price
+        [(productPrice)]="productPrice"
+        [(productDiscountPrice)]="productDiscountPrice"
+        [(addTax)]="addTax"
+      ></app-product-price>
+
+      <div class="h-px w-full mt-9 bg-(--general-60)"></div>
+
+      <app-options [(options)]="options"></app-options>
+
+      <div class="h-px w-full mt-9 bg-(--general-60)"></div>
+
+      <app-shipping
+        [(status)]="isItDigitalItem"
+        [(weight)]="weight"
+        [(country)]="country"
+      ></app-shipping>
+    </app-info-block>
+    <div class="flex flex-col gap-7 col-start-2">
+      <app-info-block title="Categories">
+        <app-categories [(selectedCategories)]="categories"></app-categories>
+      </app-info-block>
+      <app-info-block title="Tags">
+        <app-tags [(tags)]="tags"></app-tags>
+      </app-info-block>
+      <app-info-block title="Seo Settings">
+        <app-seo-settings [(title)]="seoTitle" [(description)]="seoDescription"></app-seo-settings>
+      </app-info-block>
+    </div>
+  </div>
+</app-content>
